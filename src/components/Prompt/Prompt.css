@@ -1,0 +1,10 @@
+.game__prompt {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  background-color: hotpink;
+  overflow: scroll;
+  width: 70vh;
+  height: 50vh;
+  font-size: 36px;
+}
