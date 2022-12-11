@@ -2,3 +2,7 @@
   margin-top: 20px;
   background-image: linear-gradient(to right, rgb(255, 255, 0), rgb(255, 0, 179))
 }
+
+.game__btn:disabled {
+  opacity: .5;
+}
