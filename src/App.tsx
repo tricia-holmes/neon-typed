@@ -17,6 +17,7 @@ function App() {
     handleInput,
     text,
     startGame,
+    endGame,
   } = useGame();
 
   useEffect(() => {
@@ -197,6 +198,10 @@ function App() {
       }, 1000);
       console.log("HEY");
     }
+
+    if (timeRemaining === 0) {
+      endGame();
+    }
   }, [isTimeRunning, timeRemaining]);
 
   return (
@@ -210,11 +215,7 @@ function App() {
         value={text}
       />
 
-      <Button
-        className="game__btn"
-        content="See the top scores!"
-        onClick={startGame}
-      />
+      <Button className="game__btn" content="Start Game" onClick={startGame} />
     </div>
   );
 }

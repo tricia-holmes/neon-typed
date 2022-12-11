@@ -16,6 +16,17 @@ function useGame() {
     setText("");
   };
 
+  const endGame = () => {
+    setIsTimeRunning(false);
+    setTimeRemaining(STARTING__TIME);
+    setText('')
+    // setWords(
+    //   words.map((word) => {
+    //     return { ...word, isCorrect: undefined };
+    //   })
+    // );
+  };
+
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setText(e.currentTarget.value.trim());
   };
@@ -66,6 +77,7 @@ function useGame() {
     handleInput,
     text,
     startGame,
+    endGame,
   };
 }
 
