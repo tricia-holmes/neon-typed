@@ -1,8 +1,7 @@
 .word {
   display: inline-block;
-  margin: 20px;
-  margin-top: 30px;
-  font-size: 45px;
+  margin-inline: 8px;
+  font-size: 35px;
 }
 
 

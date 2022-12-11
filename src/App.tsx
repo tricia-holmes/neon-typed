@@ -5,6 +5,9 @@ import Prompt from "./components/Prompt/Prompt";
 import Input from "./components/Input/Input";
 
 function App() {
+  const STARTING__TIME = 30;
+  const [timeRemaining, setTimeRemaining] = useState(STARTING__TIME);
+  const [isTimeRunning, setIsTimeRunning] = useState(false);
   const [text, setText] = useState(""); // TODO: game input hook
   const [currentIndex, setCurrentIndex] = useState(0);
   const [correctWords, setCorrectWords] = useState(0);
@@ -184,6 +187,21 @@ function App() {
     setWords(wordObjs);
   }, []);
 
+  useEffect(() => {
+    if (isTimeRunning && timeRemaining > 0) {
+      setTimeout(() => {
+        setTimeRemaining((time) => time - 1);
+      }, 1000);
+      console.log("HEY");
+    }
+  }, [isTimeRunning, timeRemaining]);
+
+  const startGame = () => {
+    setIsTimeRunning(true);
+    setTimeRemaining(STARTING__TIME);
+    setText("");
+  };
+
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     // TODO: game input hook
     setText(e.currentTarget.value.trim());
@@ -229,6 +247,7 @@ function App() {
 
   return (
     <div className="App">
+      <h1>Countdown: {timeRemaining}</h1>
       <Prompt words={words} currentIndex={currentIndex} />
       <Input
         className="game__input"
@@ -237,7 +256,11 @@ function App() {
         value={text}
       />
 
-      <Button className="game__btn" content="See the top scores!" />
+      <Button
+        className="game__btn"
+        content="See the top scores!"
+        onClick={startGame}
+      />
     </div>
   );
 }

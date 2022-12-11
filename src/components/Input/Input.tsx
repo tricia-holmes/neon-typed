@@ -23,7 +23,6 @@ export default function Input({
         onKeyDown={onKeyDown}
         onChange={onChange}
         value={value}
-        placeholder="Type here to start the clock"
       ></input>
     </div>
   );
