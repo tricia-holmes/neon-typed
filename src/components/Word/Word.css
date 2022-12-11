@@ -1,0 +1,21 @@
+.word {
+  display: inline-block;
+  margin: 20px;
+  margin-top: 30px;
+  font-size: 45px;
+}
+
+
+
+.correct {
+  color: lime
+}
+
+.incorrect {
+  color: red
+}
+
+.highlighted {
+  background-color: darkgrey;
+  
+}
