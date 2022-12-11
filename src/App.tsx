@@ -3,7 +3,7 @@ import "./App.css";
 import useGame from "./hooks/useGame";
 import Button from "./components/Button/Button";
 import Prompt from "./components/Prompt/Prompt";
-import Input from "./components/Input/Input";
+import { Input } from "./components/Input/Input";
 
 function App() {
   const {
@@ -18,6 +18,7 @@ function App() {
     text,
     startGame,
     endGame,
+    inputRef,
   } = useGame();
 
   useEffect(() => {
@@ -210,12 +211,19 @@ function App() {
       <Prompt words={words} currentIndex={currentIndex} />
       <Input
         className="game__input"
+        ref={inputRef}
+        disabled={!isTimeRunning}
         onChange={handleChange}
         onKeyDown={handleInput}
         value={text}
       />
 
-      <Button className="game__btn" content="Start Game" onClick={startGame} />
+      <Button
+        className="game__btn"
+        content="Start Game"
+        onClick={startGame}
+        disabled={isTimeRunning}
+      />
     </div>
   );
 }

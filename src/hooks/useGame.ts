@@ -1,7 +1,8 @@
-import { useState, ChangeEvent, KeyboardEvent } from "react";
+import { useState, ChangeEvent, KeyboardEvent, useRef } from "react";
 
 function useGame() {
-  const STARTING__TIME = 30;
+  const STARTING__TIME = 5;
+  const inputRef = useRef<HTMLInputElement>(null)
   const [text, setText] = useState("");
   const [timeRemaining, setTimeRemaining] = useState(STARTING__TIME);
   const [isTimeRunning, setIsTimeRunning] = useState(false);
@@ -11,14 +12,31 @@ function useGame() {
   );
 
   const startGame = () => {
+    setCurrentIndex(0)
     setIsTimeRunning(true);
     setTimeRemaining(STARTING__TIME);
     setText("");
+    if (inputRef.current !== null) {
+      inputRef.current.disabled = false
+      inputRef.current.focus()
+    }
+
+      setWords(
+      words.map((word) => {
+        return { ...word, isCorrect: undefined };
+      })
+    );
   };
 
   const endGame = () => {
     setIsTimeRunning(false);
     setTimeRemaining(STARTING__TIME);
+
+    // if (inputRef.current !== null) {
+    //   inputRef.current.disabled = false
+    //   inputRef.current.focus()
+    // }
+
     setText('')
     // setWords(
     //   words.map((word) => {
@@ -78,6 +96,7 @@ function useGame() {
     text,
     startGame,
     endGame,
+    inputRef
   };
 }
 
