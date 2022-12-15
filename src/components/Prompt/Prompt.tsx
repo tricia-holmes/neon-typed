@@ -18,3 +18,6 @@ export default function Prompt({ words, currentIndex }: PromptProps) {
   ));
   return <div className="game__prompt">{newWords}</div>;
 }
+
+
+
