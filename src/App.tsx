@@ -1,228 +1,44 @@
 import { useEffect } from "react";
 import "./App.css";
 import useGame from "./hooks/useGame";
-import Button from "./components/Button/Button";
 import Prompt from "./components/Prompt/Prompt";
 import { Input } from "./components/Input/Input";
+import { wordsData } from "./wordsData";
 
 function App() {
   const {
-    setWords,
+    inputText,
     isTimeRunning,
     timeRemaining,
-    setTimeRemaining,
-    words,
+    promptWords,
     currentIndex,
+    setPromptWords,
+    runCountdown,
     handleChange,
     handleInput,
-    text,
-    startGame,
-    endGame,
-    inputRef,
   } = useGame();
 
   useEffect(() => {
-    const wordObjs = [
-      "cake",
-      "from",
-      "a",
-      "bakery",
-      "is",
-      "super",
-      "yummy",
-      "and",
-      "nutrious",
-      "cake",
-      "from",
-      "a",
-      "bakery",
-      "is",
-      "super",
-      "yummy",
-      "and",
-      "nutrious",
-      "cake",
-      "from",
-      "a",
-      "bakery",
-      "is",
-      "super",
-      "yummy",
-      "and",
-      "nutrious",
-      "cake",
-      "from",
-      "a",
-      "bakery",
-      "is",
-      "super",
-      "yummy",
-      "and",
-      "nutrious",
-      "cake",
-      "from",
-      "a",
-      "bakery",
-      "is",
-      "super",
-      "yummy",
-      "and",
-      "nutrious",
-      "cake",
-      "from",
-      "a",
-      "bakery",
-      "is",
-      "super",
-      "yummy",
-      "and",
-      "nutrious",
-      "cake",
-      "from",
-      "a",
-      "bakery",
-      "is",
-      "super",
-      "yummy",
-      "and",
-      "nutrious",
-      "cake",
-      "from",
-      "a",
-      "bakery",
-      "is",
-      "super",
-      "yummy",
-      "and",
-      "nutrious",
-      "cake",
-      "from",
-      "a",
-      "bakery",
-      "is",
-      "super",
-      "yummy",
-      "and",
-      "nutrious",
-      "cake",
-      "from",
-      "a",
-      "bakery",
-      "is",
-      "super",
-      "yummy",
-      "and",
-      "nutrious",
-      "cake",
-      "from",
-      "a",
-      "bakery",
-      "is",
-      "super",
-      "yummy",
-      "and",
-      "nutrious",
-      "cake",
-      "from",
-      "a",
-      "bakery",
-      "is",
-      "super",
-      "yummy",
-      "and",
-      "nutrious",
-      "cake",
-      "from",
-      "a",
-      "bakery",
-      "is",
-      "super",
-      "yummy",
-      "and",
-      "nutrious",
-      "cake",
-      "from",
-      "a",
-      "bakery",
-      "is",
-      "super",
-      "yummy",
-      "and",
-      "nutrious",
-      "cake",
-      "from",
-      "a",
-      "bakery",
-      "is",
-      "super",
-      "yummy",
-      "and",
-      "nutrious",
-      "cake",
-      "from",
-      "a",
-      "bakery",
-      "is",
-      "super",
-      "yummy",
-      "and",
-      "nutrious",
-      "cake",
-      "from",
-      "a",
-      "bakery",
-      "is",
-      "super",
-      "yummy",
-      "and",
-      "nutrious",
-      "cake",
-      "from",
-      "a",
-      "bakery",
-      "is",
-      "super",
-      "yummy",
-      "and",
-      "nutrious",
-    ].map((word, index) => {
+    const wordObjs = wordsData.map((word, index) => {
       return { word, isCorrect: undefined, index };
     });
 
-    setWords(wordObjs);
+    setPromptWords(wordObjs);
   }, []);
 
   useEffect(() => {
-    if (isTimeRunning && timeRemaining > 0) {
-      setTimeout(() => {
-        setTimeRemaining((time: number) => time - 1);
-      }, 1000);
-      console.log("HEY");
-    }
-
-    if (timeRemaining === 0) {
-      endGame();
-    }
+    runCountdown()
   }, [isTimeRunning, timeRemaining]);
 
   return (
     <div className="App">
       <h1>Countdown: {timeRemaining}</h1>
-      <Prompt words={words} currentIndex={currentIndex} />
+      <Prompt words={promptWords} currentIndex={currentIndex} />
       <Input
         className="game__input"
-        ref={inputRef}
-        disabled={!isTimeRunning}
         onChange={handleChange}
         onKeyDown={handleInput}
-        value={text}
-      />
-
-      <Button
-        className="game__btn"
-        content="Start Game"
-        onClick={startGame}
-        disabled={isTimeRunning}
+        value={inputText}
       />
     </div>
   );
