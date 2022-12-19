@@ -3,7 +3,7 @@ import "./App.css";
 import useGame from "./hooks/useGame";
 import Prompt from "./components/Prompt/Prompt";
 import { Input } from "./components/Input/Input";
-import {wordsData} from "./wordsData"
+import { wordsData } from "./wordsData";
 
 function App() {
   const {
@@ -13,10 +13,9 @@ function App() {
     promptWords,
     currentIndex,
     setPromptWords,
-    setTimeRemaining,
+    runCountdown,
     handleChange,
     handleInput,
-    endGame, 
   } = useGame();
 
   useEffect(() => {
@@ -28,15 +27,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (isTimeRunning && timeRemaining > 0) {
-      setTimeout(() => {
-        setTimeRemaining((time: number) => time - 1);
-      }, 1000);
-    }
-
-    if (timeRemaining === 0) {
-      endGame();
-    }
+    runCountdown()
   }, [isTimeRunning, timeRemaining]);
 
   return (

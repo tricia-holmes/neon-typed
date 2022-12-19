@@ -1,4 +1,4 @@
-import { KeyboardEvent, ChangeEvent, forwardRef } from "react";
+import { KeyboardEvent, ChangeEvent} from "react";
 import "./Input.css";
 
 type InputProps = {
