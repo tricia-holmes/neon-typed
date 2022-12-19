@@ -6,44 +6,19 @@ type InputProps = {
   onKeyDown: (e: KeyboardEvent<HTMLInputElement>) => void;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
   value: string;
-  disabled: boolean;
 };
 
-export const Input = forwardRef<HTMLInputElement, InputProps>(
-  (props: InputProps, ref) => (
+export function Input({className, onChange, onKeyDown, value}: InputProps) {
+  return (
     <div>
       <input
-        ref={ref}
         type="text"
         name="text"
-        className={props.className}
-        onKeyDown={props.onKeyDown}
-        onChange={props.onChange}
-        value={props.value}
-        disabled={props.disabled}
+        className={className}
+        onKeyDown={onKeyDown}
+        onChange={onChange}
+        value={value}
       />
     </div>
-  )
-);
-
-// export default function Input({
-//   {className,
-//   onKeyDown,
-//   onChange,
-//   value},
-//   ref
-// }: InputProps) {
-//   return (
-//     <div>
-//       <input
-//         ref={ref}
-//         type="text"
-//         name="text"
-//         className={className}
-//         onKeyDown={onKeyDown}
-//         onChange={onChange}
-//         value={value}
-//       ></input>
-//     </div>
-//   );
-// }
+  );
+}

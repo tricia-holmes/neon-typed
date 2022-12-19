@@ -2,27 +2,22 @@ import { useState, ChangeEvent, KeyboardEvent, useRef } from "react";
 
 function useGame() {
   const STARTING__TIME = 5;
-  const inputRef = useRef<HTMLInputElement>(null)
-  const [text, setText] = useState("");
+  const [inputText, setInputText] = useState("");
   const [timeRemaining, setTimeRemaining] = useState(STARTING__TIME);
   const [isTimeRunning, setIsTimeRunning] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [words, setWords] = useState(
+  const [promptWords, setPromptWords] = useState(
     Array<{ word: string; isCorrect: undefined | boolean; index: number }>
   );
 
   const startGame = () => {
-    setCurrentIndex(0)
+    setCurrentIndex(0);
     setIsTimeRunning(true);
     setTimeRemaining(STARTING__TIME);
-    setText("");
-    if (inputRef.current !== null) {
-      inputRef.current.disabled = false
-      inputRef.current.focus()
-    }
+    setInputText("");
 
-      setWords(
-      words.map((word) => {
+    setPromptWords(
+      promptWords.map((word) => {
         return { ...word, isCorrect: undefined };
       })
     );
@@ -31,46 +26,39 @@ function useGame() {
   const endGame = () => {
     setIsTimeRunning(false);
     setTimeRemaining(STARTING__TIME);
-
-    // if (inputRef.current !== null) {
-    //   inputRef.current.disabled = false
-    //   inputRef.current.focus()
-    // }
-
-    setText('')
-    // setWords(
-    //   words.map((word) => {
-    //     return { ...word, isCorrect: undefined };
-    //   })
-    // );
+    setInputText("");
   };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setText(e.currentTarget.value.trim());
+    if (!isTimeRunning) {
+      startGame();
+    }
+
+    setInputText(e.currentTarget.value.trim());
   };
 
   const updateCorrectWord = () => {
-    const newWordsList = words.map((word) => {
+    const newWordsList = promptWords.map((word) => {
       if (word.index === currentIndex) {
         return { ...word, isCorrect: true };
       }
       return word;
     });
-    setWords(newWordsList);
+    setPromptWords(newWordsList);
   };
 
   const updateIncorrectWord = () => {
-    const newWordsList = words.map((word) => {
+    const newWordsList = promptWords.map((word) => {
       if (word.index === currentIndex) {
         return { ...word, isCorrect: false };
       }
       return word;
     });
-    setWords(newWordsList);
+    setPromptWords(newWordsList);
   };
 
   const checkWord = () => {
-    if (words[currentIndex].word === text) {
+    if (promptWords[currentIndex].word === inputText) {
       updateCorrectWord();
     } else {
       updateIncorrectWord();
@@ -81,22 +69,20 @@ function useGame() {
   const handleInput = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === " " || e.key === "Space") {
       checkWord();
-      setText("");
+      setInputText("");
     }
   };
   return {
-    setWords,
+    inputText,
     isTimeRunning,
     timeRemaining,
-    setTimeRemaining,
-    words,
+    promptWords,
     currentIndex,
+    setPromptWords,
+    setTimeRemaining,
     handleChange,
     handleInput,
-    text,
-    startGame,
     endGame,
-    inputRef
   };
 }
 
