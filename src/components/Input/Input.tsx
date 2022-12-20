@@ -22,7 +22,7 @@ type InputProps = {
   ) => void;
 };
 
-export function Input({
+export default function Input({
   promptWords,
   currentIndex,
   setCurrentIndex,
