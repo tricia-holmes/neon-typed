@@ -25,11 +25,6 @@ function App() {
         setIsTimeRunning(false)
         setTimeRemaining(5)
         setCurrentIndex(0)
-        // setPromptWords(
-        //   promptWords.map((word) => {
-        //     return { ...word, isCorrect: undefined }
-        //   })
-        // )
       }
 
       return clearInterval(interval)
@@ -50,7 +45,13 @@ function App() {
 
   return (
     <div className='App'>
-      {hasResults && <Modal promptWords={promptWords}/>}
+      {hasResults && (
+        <Modal
+          promptWords={promptWords}
+          setPromptWords={setPromptWords}
+          setHasResults={setHasResults}
+        />
+      )}
       <h1>Countdown: {timeRemaining}</h1>
       <Prompt words={promptWords} currentIndex={currentIndex} />
       <Input
