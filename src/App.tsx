@@ -63,6 +63,7 @@ function App() {
         timeRemaining={timeRemaining}
         setIsTimeRunning={setIsTimeRunning}
         setTimeRemaining={setTimeRemaining}
+        hasResults={hasResults}
       />
     </div>
   )

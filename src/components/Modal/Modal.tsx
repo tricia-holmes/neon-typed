@@ -22,14 +22,24 @@ export default function Modal({
   setPromptWords,
   setHasResults,
 }: ModalPrompts) {
-  const [WPM, setWPM] = useState(0)
-  const [correct, setCorrect] = useState(0)
-  const [incorrect, setIncorrect] = useState(0)
+  const [WPM, setWPM] = useState(
+    promptWords.filter((word) => word.isCorrect).length * 12
+  )
+  const [correct, setCorrect] = useState(
+    promptWords.filter((word) => word.isCorrect).length
+  )
+  const [incorrect, setIncorrect] = useState(
+    promptWords.filter((word) => word.isCorrect === false).length
+  )
+  const [accuracy, setAccuracy] = useState(
+    ((correct / (correct + incorrect)) * 100).toFixed(2)
+  )
 
   useEffect(() => {
-    setWPM(promptWords.filter((word) => word.isCorrect).length * 12)
-    setCorrect(promptWords.filter((word) => word.isCorrect).length)
-    setIncorrect(promptWords.filter((word) => word.isCorrect === false).length)
+    // setWPM(promptWords.filter((word) => word.isCorrect).length * 12)
+    // setCorrect(promptWords.filter((word) => word.isCorrect).length)
+    // setIncorrect(promptWords.filter((word) => word.isCorrect === false).length)
+    // setAccuracy((correct / (correct + incorrect)) * 100)
   }, [])
 
   const handleClick = () => {
@@ -49,6 +59,7 @@ export default function Modal({
         <p>WPM: {WPM}</p>
         <p>CORRECT: {correct}</p>
         <p>INCORRECT: {incorrect}</p>
+        <p>Accuracy: {accuracy}%</p>
       </div>
     </div>
   )
