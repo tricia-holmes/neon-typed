@@ -1,22 +1,37 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
-import useGame from "./hooks/useGame";
 import Prompt from "./components/Prompt/Prompt";
 import { Input } from "./components/Input/Input";
 import { wordsData } from "./wordsData";
 
 function App() {
-  const {
-    inputText,
-    isTimeRunning,
-    timeRemaining,
-    promptWords,
-    currentIndex,
-    setPromptWords,
-    runCountdown,
-    handleChange,
-    handleInput,
-  } = useGame();
+  const [timeRemaining, setTimeRemaining] = useState(5);
+  const [isTimeRunning, setIsTimeRunning] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [promptWords, setPromptWords] = useState(
+    Array<{ word: string; isCorrect: undefined | boolean; index: number }>
+  );
+
+  const runCountdown = () => {
+    let interval = setInterval(() => {
+      if (isTimeRunning && timeRemaining > 0) {
+        setTimeRemaining((time: number) => time - 1);
+      }
+
+      if (timeRemaining === 0) {
+        setIsTimeRunning(false);
+        setTimeRemaining(5);
+        setCurrentIndex(0);
+        setPromptWords(
+          promptWords.map((word) => {
+            return { ...word, isCorrect: undefined };
+          })
+        );
+      }
+
+      return clearInterval(interval);
+    }, 1000);
+  };
 
   useEffect(() => {
     const wordObjs = wordsData.map((word, index) => {
@@ -27,7 +42,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    runCountdown()
+    runCountdown();
   }, [isTimeRunning, timeRemaining]);
 
   return (
@@ -35,13 +50,16 @@ function App() {
       <h1>Countdown: {timeRemaining}</h1>
       <Prompt words={promptWords} currentIndex={currentIndex} />
       <Input
-        className="game__input"
-        onChange={handleChange}
-        onKeyDown={handleInput}
-        value={inputText}
+        promptWords={promptWords}
+        setPromptWords={setPromptWords}
+        currentIndex={currentIndex}
+        setCurrentIndex={setCurrentIndex}
+        isTimeRunning={isTimeRunning}
+        timeRemaining={timeRemaining}
+        setIsTimeRunning={setIsTimeRunning}
+        setTimeRemaining={setTimeRemaining}
       />
     </div>
   );
 }
-
 export default App;
