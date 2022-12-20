@@ -5,6 +5,7 @@ type InputProps = {
   isTimeRunning: boolean
   timeRemaining: number
   currentIndex: number
+  hasResults: boolean
   promptWords: Array<{
     word: string
     isCorrect: undefined | boolean
@@ -22,9 +23,10 @@ type InputProps = {
   ) => void
 }
 
-export function Input({
+export default function Input({
   promptWords,
   currentIndex,
+  hasResults,
   setCurrentIndex,
   setPromptWords,
   isTimeRunning,
@@ -39,7 +41,7 @@ export function Input({
     if (inputRef.current) {
       inputRef.current.focus()
     }
-  }, [])
+  }, [hasResults])
 
   useEffect(() => {
     if (timeRemaining === 0) {
@@ -93,6 +95,7 @@ export function Input({
         onChange={handleChange}
         onKeyDown={handleInput}
         value={inputText}
+        disabled={hasResults}
       />
     </div>
   )
