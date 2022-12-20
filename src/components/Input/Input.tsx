@@ -52,15 +52,11 @@ export function Input({
   const updateWord = (status: boolean) => {
     const newPromptWords = [...promptWords]
     newPromptWords[currentIndex].isCorrect = status
-    setPromptWords(newPromptWords)
+    // setPromptWords(newPromptWords)
   }
 
   const checkWord = () => {
-    if (promptWords[currentIndex].word === inputText) {
-      updateWord(true)
-    } else {
-      updateWord(false)
-    }
+    updateWord(promptWords[currentIndex].word === inputText)
     setCurrentIndex((currentIndex: number) => currentIndex + 1)
   }
 
