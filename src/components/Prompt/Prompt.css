@@ -1,6 +1,6 @@
 .game__prompt {
   display: block;
-  position: relative;
+  /* position: relative; */
   justify-content: space-evenly; 
   background-color: hotpink;
   width: 100vh;
