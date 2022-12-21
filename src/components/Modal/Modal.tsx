@@ -18,7 +18,10 @@ export default function Modal({
   const incorrect = promptWords.filter(
     (word) => word.isCorrect === false
   ).length
-  const accuracy = ((correct / (correct + incorrect)) * 100).toFixed(2)
+  const accuracy = ((correct / (correct + incorrect)) * 100)
+
+  console.log(accuracy)
+  console.log(!!accuracy)
 
   return (
     <div className='modal'>
@@ -28,7 +31,7 @@ export default function Modal({
         <p>WPM: {WPM}</p>
         <p>CORRECT: {correct}</p>
         <p>INCORRECT: {incorrect}</p>
-        <p>Accuracy: {accuracy}%</p>
+        <p>Accuracy: {accuracy ? accuracy.toFixed(2) : 0}%</p>
       </div>
     </div>
   )

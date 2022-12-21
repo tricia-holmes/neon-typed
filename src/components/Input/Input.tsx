@@ -7,7 +7,11 @@ type InputProps = {
   hasResults: boolean
 }
 
-export default function Input({ checkWord, hasResults, handleCountdown }: InputProps) {
+export default function Input({
+  checkWord,
+  hasResults,
+  handleCountdown,
+}: InputProps) {
   const [inputText, setInputText] = useState('')
   const inputRef = useRef<HTMLInputElement>(null)
 
@@ -32,18 +36,16 @@ export default function Input({ checkWord, hasResults, handleCountdown }: InputP
   }
 
   return (
-    <div>
-      <input
-        type='text'
-        name='text'
-        ref={inputRef}
-        className='game__input'
-        onChange={handleChange}
-        onKeyDown={handleInput}
-        value={inputText}
-        disabled={hasResults}
-        autoComplete='off'
-      />
-    </div>
+    <input
+      type='text'
+      name='text'
+      ref={inputRef}
+      className='game__input'
+      onChange={handleChange}
+      onKeyDown={handleInput}
+      value={inputText}
+      disabled={hasResults}
+      autoComplete='off'
+    />
   )
 }
