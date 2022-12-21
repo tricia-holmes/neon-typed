@@ -1,11 +1,8 @@
 .game__prompt {
   display: block;
-  /* position: relative; */
-  justify-content: space-evenly; 
   background-color: hotpink;
   width: 100vh;
   height: 60vh;
-  overflow-y: scroll;
-  font-size: 35px;
+  overflow: hidden;
   margin-bottom: 20px;
 }

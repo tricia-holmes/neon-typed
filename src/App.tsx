@@ -1,69 +1,92 @@
 import { useState, useEffect } from 'react'
 import './App.css'
-import Prompt from './components/Prompt/Prompt'
-import Input from './components/Input/Input'
+import Prompt from './components/Prompt'
+import Input from './components/Input'
 import { wordsData } from './wordsData'
 import Modal from './components/Modal/Modal'
 
+type PromptWords = {
+  word: string
+  isCorrect: null | boolean
+}
+
 function App() {
-  const [timeRemaining, setTimeRemaining] = useState(5)
+  const STARTING__TIME = 30
+  const [timeRemaining, setTimeRemaining] = useState(STARTING__TIME)
   const [isTimeRunning, setIsTimeRunning] = useState(false)
   const [currentIndex, setCurrentIndex] = useState(0)
-  const [promptWords, setPromptWords] = useState(
-    Array<{ word: string; isCorrect: undefined | boolean; index: number }>
-  )
+  const [promptWords, setPromptWords] = useState<PromptWords[]>([])
   const [hasResults, setHasResults] = useState(false)
 
-  const runCountdown = () => {
-    let interval = setInterval(() => {
-      if (isTimeRunning && timeRemaining > 0) {
-        setTimeRemaining((time: number) => time - 1)
-      }
-
-      if (timeRemaining === 0) {
-        setHasResults(true)
-        setIsTimeRunning(false)
-        setTimeRemaining(5)
-        setCurrentIndex(0)
-      }
-
-      return clearInterval(interval)
-    }, 1000)
-  }
-
   useEffect(() => {
-    const wordObjs = wordsData.map((word, index) => {
-      return { word, isCorrect: undefined, index }
+    const wordObjs = wordsData.map((word) => {
+      return { word, isCorrect: null }
     })
 
     setPromptWords(wordObjs)
   }, [])
 
   useEffect(() => {
-    runCountdown()
-  }, [isTimeRunning, timeRemaining])
+    let interval = 0
+
+    if (isTimeRunning) {
+      interval = setInterval(() => {
+        setTimeRemaining((time: number) => time - 1)
+      }, 1000)
+    }
+
+    return () => {
+      clearInterval(interval)
+    }
+  }, [isTimeRunning])
+
+  useEffect(() => {
+    if (isTimeRunning && timeRemaining === 0) {
+      setHasResults(true)
+      setIsTimeRunning(false)
+    }
+  }, [timeRemaining])
+
+  const updateWord = (isCorrect: boolean) => {
+    const newPromptWords = [...promptWords]
+    newPromptWords[currentIndex] = {
+      ...newPromptWords[currentIndex],
+      isCorrect,
+    }
+    setPromptWords(newPromptWords)
+  }
+
+  const checkWord = (inputText: string) => {
+    updateWord(promptWords[currentIndex].word === inputText)
+    setCurrentIndex((currentIndex: number) => currentIndex + 1)
+  }
+
+  const handleCountdown = () => {
+    if (!isTimeRunning) {
+      setIsTimeRunning(true)
+    }
+  }
+
+  const reset = () => {
+    setTimeRemaining(STARTING__TIME)
+    setCurrentIndex(0)
+    setPromptWords(
+      promptWords.map((word) => {
+        return { ...word, isCorrect: null }
+      })
+    )
+    setHasResults(false)
+  }
 
   return (
     <div className='App'>
-      {hasResults && (
-        <Modal
-          promptWords={promptWords}
-          setPromptWords={setPromptWords}
-          setHasResults={setHasResults}
-        />
-      )}
+      {hasResults && <Modal promptWords={promptWords} reset={reset} />}
       <h1>Countdown: {timeRemaining}</h1>
       <Prompt words={promptWords} currentIndex={currentIndex} />
       <Input
-        promptWords={promptWords}
-        setPromptWords={setPromptWords}
-        currentIndex={currentIndex}
-        setCurrentIndex={setCurrentIndex}
-        isTimeRunning={isTimeRunning}
-        timeRemaining={timeRemaining}
-        setIsTimeRunning={setIsTimeRunning}
-        setTimeRemaining={setTimeRemaining}
+        checkWord={checkWord}
         hasResults={hasResults}
+        handleCountdown={handleCountdown}
       />
     </div>
   )
