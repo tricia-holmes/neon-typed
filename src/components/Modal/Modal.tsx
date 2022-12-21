@@ -5,19 +5,13 @@ type ModalPrompts = {
     word: string
     isCorrect: null | boolean
   }>
-  setPromptWords: (
-    value: Array<{
-      word: string
-      isCorrect: null | boolean
-    }>
-  ) => void
-  setHasResults: (value: boolean) => void
+  reset: () => void
+  
 }
 
 export default function Modal({
   promptWords,
-  setPromptWords,
-  setHasResults,
+  reset
 }: ModalPrompts) {
   const WPM = promptWords.filter((word) => word.isCorrect).length * 2
   const correct = promptWords.filter((word) => word.isCorrect).length
@@ -26,19 +20,10 @@ export default function Modal({
   ).length
   const accuracy = ((correct / (correct + incorrect)) * 100).toFixed(2)
 
-  const handleClick = () => {
-    setPromptWords(
-      promptWords.map((word) => {
-        return { ...word, isCorrect: null }
-      })
-    )
-    setHasResults(false)
-  }
-
   return (
     <div className='modal'>
       <div className='modal__container'>
-        <button onClick={handleClick}>Close</button>
+        <button onClick={reset}>Close</button>
         <h1>Your Results</h1>
         <p>WPM: {WPM}</p>
         <p>CORRECT: {correct}</p>
