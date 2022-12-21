@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import './App.css'
-import Prompt from './components/Prompt/Prompt'
-import Input from './components/Input/Input'
+import Prompt from './components/Prompt'
+import Input from './components/Input'
 import { wordsData } from './wordsData'
 import Modal from './components/Modal/Modal'
 

@@ -1,5 +1,5 @@
 import './Prompt.css'
-import Word from '../Word/Word'
+import Word from '../Word'
 import { useEffect } from 'react';
 
 type PromptProps = {
