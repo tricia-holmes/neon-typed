@@ -1,17 +1,14 @@
-import { useEffect, useState } from 'react'
 import './Modal.css'
 
 type ModalPrompts = {
   promptWords: Array<{
     word: string
-    isCorrect: undefined | boolean
-    index: number
+    isCorrect: null | boolean
   }>
   setPromptWords: (
     value: Array<{
       word: string
-      isCorrect: undefined | boolean
-      index: number
+      isCorrect: null | boolean
     }>
   ) => void
   setHasResults: (value: boolean) => void
@@ -22,30 +19,17 @@ export default function Modal({
   setPromptWords,
   setHasResults,
 }: ModalPrompts) {
-  const [WPM, setWPM] = useState(
-    promptWords.filter((word) => word.isCorrect).length * 12
-  )
-  const [correct, setCorrect] = useState(
-    promptWords.filter((word) => word.isCorrect).length
-  )
-  const [incorrect, setIncorrect] = useState(
-    promptWords.filter((word) => word.isCorrect === false).length
-  )
-  const [accuracy, setAccuracy] = useState(
-    ((correct / (correct + incorrect)) * 100).toFixed(2)
-  )
-
-  useEffect(() => {
-    // setWPM(promptWords.filter((word) => word.isCorrect).length * 12)
-    // setCorrect(promptWords.filter((word) => word.isCorrect).length)
-    // setIncorrect(promptWords.filter((word) => word.isCorrect === false).length)
-    // setAccuracy((correct / (correct + incorrect)) * 100)
-  }, [])
+  const WPM = promptWords.filter((word) => word.isCorrect).length * 2
+  const correct = promptWords.filter((word) => word.isCorrect).length
+  const incorrect = promptWords.filter(
+    (word) => word.isCorrect === false
+  ).length
+  const accuracy = ((correct / (correct + incorrect)) * 100).toFixed(2)
 
   const handleClick = () => {
     setPromptWords(
       promptWords.map((word) => {
-        return { ...word, isCorrect: undefined }
+        return { ...word, isCorrect: null }
       })
     )
     setHasResults(false)
