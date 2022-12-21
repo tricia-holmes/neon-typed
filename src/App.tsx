@@ -11,7 +11,8 @@ type PromptWords = {
 }
 
 function App() {
-  const [timeRemaining, setTimeRemaining] = useState(5)
+  const STARTING__TIME = 30
+  const [timeRemaining, setTimeRemaining] = useState(STARTING__TIME)
   const [isTimeRunning, setIsTimeRunning] = useState(false)
   const [currentIndex, setCurrentIndex] = useState(0)
   const [promptWords, setPromptWords] = useState<PromptWords[]>([])
@@ -67,7 +68,7 @@ function App() {
   }
 
   const reset = () => {
-    setTimeRemaining(5)
+    setTimeRemaining(STARTING__TIME)
     setCurrentIndex(0)
     setPromptWords(
       promptWords.map((word) => {
