@@ -1,41 +1,23 @@
-import "./Word.css";
+import './Word.css'
 
 type WordPrompts = {
-  word: string;
-  index: number;
-  isCorrect: undefined | boolean;
-  currentIndex: number;
-};
+  word: string
+  isCorrect: null | boolean
+  isCurrent: boolean
+}
 
-const style = (
-  index: number,
-  currentIndex: number,
-  isCorrect: undefined | boolean
-) => {
-  if (currentIndex === index) {
-    return "highlighted word";
-  } else if (isCorrect === undefined) {
-    return "default word";
+const style = (isCurrent: boolean, isCorrect: null | boolean) => {
+  if (isCurrent) {
+    return 'highlighted word'
+  } else if (isCorrect === null) {
+    return 'default word'
   } else if (isCorrect) {
-    return "correct word";
+    return 'correct word'
   } else {
-    return "incorrect word";
+    return 'incorrect word'
   }
-};
+}
 
-export default function Word({
-  word,
-  index,
-  currentIndex,
-  isCorrect,
-}: WordPrompts) {
-
-  return (
-    <p
-      className={style(index, currentIndex, isCorrect)}
-      key={index}
-    >
-      {word}
-    </p>
-  );
+export default function Word({ word, isCurrent, isCorrect }: WordPrompts) {
+  return <p className={style(isCurrent, isCorrect)}>{word}</p>
 }

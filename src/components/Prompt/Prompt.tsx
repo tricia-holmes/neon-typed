@@ -2,18 +2,17 @@ import "./Prompt.css";
 import Word from "../Word/Word";
 
 type PromptProps = {
-  words: Array<{ word: string; isCorrect: undefined | boolean; index: number }>;
+  words: Array<{ word: string; isCorrect: null | boolean}>;
   currentIndex: number
 };
 
 export default function Prompt({ words, currentIndex }: PromptProps) {
-  const newWords = words.map((item) => (
+  const newWords = words.map((item, index) => (
     <Word
-    key={item.index}
+    key={`word ${index}`}
     word={item.word}
     isCorrect={item.isCorrect}
-    index={item.index}
-    currentIndex={currentIndex}
+    isCurrent={currentIndex === index}
     />
   ));
   return <div className="game__prompt">{newWords}</div>;
