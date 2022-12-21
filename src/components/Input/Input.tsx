@@ -1,4 +1,5 @@
 import { useState, KeyboardEvent, ChangeEvent, useEffect, useRef } from 'react'
+import { wordsData } from '../../wordsData'
 import './Input.css'
 
 type InputProps = {
@@ -8,8 +9,7 @@ type InputProps = {
   hasResults: boolean
   promptWords: Array<{
     word: string
-    isCorrect: undefined | boolean
-    index: number
+    isCorrect: null | boolean
   }>
   setIsTimeRunning: (value: boolean) => void
   setTimeRemaining: (value: number) => void
@@ -17,8 +17,7 @@ type InputProps = {
   setPromptWords: (
     value: Array<{
       word: string
-      isCorrect: undefined | boolean
-      index: number
+      isCorrect: null | boolean
     }>
   ) => void
 }
@@ -51,10 +50,13 @@ export default function Input({
     }
   }, [timeRemaining])
 
-  const updateWord = (status: boolean) => {
+  const updateWord = (isCorrect: boolean) => {
     const newPromptWords = [...promptWords]
-    newPromptWords[currentIndex].isCorrect = status
-    // setPromptWords(newPromptWords)
+    newPromptWords[currentIndex] = {
+      ...newPromptWords[currentIndex],
+      isCorrect,
+    }
+    setPromptWords(newPromptWords)
   }
 
   const checkWord = () => {
@@ -65,14 +67,7 @@ export default function Input({
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (!isTimeRunning) {
       setIsTimeRunning(true)
-      setTimeRemaining(5)
-      setCurrentIndex(0)
       setInputText('')
-      setPromptWords(
-        promptWords.map((word) => {
-          return { ...word, isCorrect: undefined }
-        })
-      )
     }
 
     setInputText(e.currentTarget.value.trim())
@@ -96,6 +91,7 @@ export default function Input({
         onKeyDown={handleInput}
         value={inputText}
         disabled={hasResults}
+        autoComplete='off'
       />
     </div>
   )
