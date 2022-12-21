@@ -5,13 +5,16 @@ import Input from './components/Input/Input'
 import { wordsData } from './wordsData'
 import Modal from './components/Modal/Modal'
 
+type PromptWords = {
+  word: string,
+  isCorrect: null | boolean
+}
+
 function App() {
-  const [timeRemaining, setTimeRemaining] = useState(5)
+  const [timeRemaining, setTimeRemaining] = useState(30)
   const [isTimeRunning, setIsTimeRunning] = useState(false)
   const [currentIndex, setCurrentIndex] = useState(0)
-  const [promptWords, setPromptWords] = useState(
-    Array<{ word: string; isCorrect: undefined | boolean; index: number }>
-  )
+  const [promptWords, setPromptWords] = useState<PromptWords[]>([])
   const [hasResults, setHasResults] = useState(false)
 
   const runCountdown = () => {
@@ -23,7 +26,7 @@ function App() {
       if (timeRemaining === 0) {
         setHasResults(true)
         setIsTimeRunning(false)
-        setTimeRemaining(5)
+        setTimeRemaining(30)
         setCurrentIndex(0)
       }
 
@@ -32,8 +35,8 @@ function App() {
   }
 
   useEffect(() => {
-    const wordObjs = wordsData.map((word, index) => {
-      return { word, isCorrect: undefined, index }
+    const wordObjs = wordsData.map((word) => {
+      return { word, isCorrect: null}
     })
 
     setPromptWords(wordObjs)
