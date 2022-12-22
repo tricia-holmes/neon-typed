@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react'
 import './App.css'
 import Prompt from './components/Prompt'
 import Input from './components/Input'
-import { wordsData } from './wordsData'
 import Modal from './components/Modal/Modal'
+import Button from './components/Button'
 
 type PromptWords = {
   word: string
@@ -19,11 +19,18 @@ function App() {
   const [hasResults, setHasResults] = useState(false)
 
   useEffect(() => {
-    const wordObjs = wordsData.map((word) => {
-      return { word, isCorrect: null }
-    })
+    const fetchData = async () => {
+      const response = await fetch('http://localhost:8000/words')
+      const wordsData = await response.json()
+      console.log(wordsData)
+      const wordObjs = wordsData.map((word: string) => {
+        return { word, isCorrect: null }
+      })
 
-    setPromptWords(wordObjs)
+      setPromptWords(wordObjs)
+    }
+
+    fetchData().catch(console.error) //need to add error handling
   }, [])
 
   useEffect(() => {
@@ -81,6 +88,7 @@ function App() {
   return (
     <div className='App'>
       {hasResults && <Modal promptWords={promptWords} reset={reset} />}
+      <Button content={'Leaderboard'} onClick={() => console.log('cool')} />
       <h1>Countdown: {timeRemaining}</h1>
       <Prompt words={promptWords} currentIndex={currentIndex} />
       <Input

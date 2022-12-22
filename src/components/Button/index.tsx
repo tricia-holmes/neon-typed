@@ -1,17 +1,18 @@
-import { MouseEvent } from "react";
-import "./Button.css";
+import { MouseEvent } from 'react'
+import './Button.css'
 
 type ButtonProps = {
-  content: string;
-  className: string;
-  onClick: (e: MouseEvent<HTMLButtonElement>) => void;
-  disabled: boolean;
-};
+  content: string
+  className?: string
+  onClick: (e: MouseEvent<HTMLButtonElement>) => void
+}
 
-export default function Button({ content, className, onClick, disabled }: ButtonProps) {
+export default function Button({ content, className, onClick }: ButtonProps) {
   return (
     <>
-      <button className={className} onClick={onClick} disabled={disabled}>{content}</button>
+      <button className={className} onClick={onClick}>
+        {content}
+      </button>
     </>
-  );
+  )
 }
