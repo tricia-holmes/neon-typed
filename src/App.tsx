@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import './App.css'
 import Prompt from './components/Prompt'
 import Input from './components/Input'
@@ -11,25 +11,25 @@ type PromptWords = {
 }
 
 function App() {
-  const STARTING__TIME = 30
+  const STARTING__TIME = 10
   const [timeRemaining, setTimeRemaining] = useState(STARTING__TIME)
   const [isTimeRunning, setIsTimeRunning] = useState(false)
   const [currentIndex, setCurrentIndex] = useState(0)
   const [promptWords, setPromptWords] = useState<PromptWords[]>([])
   const [hasResults, setHasResults] = useState(false)
 
+  const fetchData = useCallback(async () => {
+    const response = await fetch('http://localhost:8000/words')
+    const wordsData = await response.json()
+    console.log(wordsData)
+    const wordObjs = wordsData.map((word: string) => {
+      return { word, isCorrect: null }
+    })
+
+    setPromptWords(wordObjs)
+  }, [])
+
   useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch('http://localhost:8000/words')
-      const wordsData = await response.json()
-      console.log(wordsData)
-      const wordObjs = wordsData.map((word: string) => {
-        return { word, isCorrect: null }
-      })
-
-      setPromptWords(wordObjs)
-    }
-
     fetchData().catch(console.error) //need to add error handling
   }, [])
 
@@ -82,6 +82,7 @@ function App() {
         return { ...word, isCorrect: null }
       })
     )
+    fetchData()
     setHasResults(false)
   }
 
