@@ -1,9 +1,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import './App.css'
-import Prompt from './components/Prompt'
-import Input from './components/Input'
-import Modal from './components/Modal'
-import Button from './components/Button'
+import Login from './components/Login'
+import Game from './components/Game/Game'
 
 type PromptWords = {
   word: string
@@ -12,6 +10,7 @@ type PromptWords = {
 
 function App() {
   const STARTING__TIME = 10
+  const [token, setToken] = useState(false)
   const [timeRemaining, setTimeRemaining] = useState(STARTING__TIME)
   const [isTimeRunning, setIsTimeRunning] = useState(false)
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -21,7 +20,6 @@ function App() {
   const fetchData = useCallback(async () => {
     const response = await fetch('http://localhost:8000/words')
     const wordsData = await response.json()
-    console.log(wordsData)
     const wordObjs = wordsData.map((word: string) => {
       return { word, isCorrect: null }
     })
@@ -88,15 +86,18 @@ function App() {
 
   return (
     <div className='App'>
-      <Button />
-      <h1>Countdown: {timeRemaining}</h1>
-      <Prompt words={promptWords} currentIndex={currentIndex} />
-      <Input
-        checkWord={checkWord}
-        hasResults={hasResults}
-        handleCountdown={handleCountdown}
-      />
-      {hasResults && <Modal promptWords={promptWords} reset={reset} />}
+      {!token && <Login />}
+      {token && (
+        <Game
+          timeRemaining={timeRemaining}
+          promptWords={promptWords}
+          currentIndex={currentIndex}
+          checkWord={checkWord}
+          hasResults={hasResults}
+          handleCountdown={handleCountdown}
+          reset={reset}
+        />
+      )}
     </div>
   )
 }
