@@ -1,18 +1,18 @@
-import { MouseEvent } from 'react'
+import { useState } from 'react'
+import Leaderboard from '../Leaderboard/Index'
 import './Button.css'
 
-type ButtonProps = {
-  content: string
-  className?: string
-  onClick: (e: MouseEvent<HTMLButtonElement>) => void
+export default function Button() {
+  const [open, setOpen] = useState(false)
+
+const onClick = () => {
+  setOpen(!open)
 }
 
-export default function Button({ content, className, onClick }: ButtonProps) {
   return (
-    <>
-      <button className={className} onClick={onClick}>
-        {content}
-      </button>
-    </>
+    <div className='btn__container'>
+      <button onClick={onClick} >Leaderboard</button>
+      {open && <Leaderboard onClick={onClick}/>}
+    </div>
   )
 }

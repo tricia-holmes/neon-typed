@@ -15,6 +15,12 @@
   -webkit-text-size-adjust: 100%;
 }
 
+@font-face {
+  font-family: Press2Play;
+  src: url('./fonts/PressStart2P-Regular.ttf');
+  font-weight: 400;
+}
+
 a {
   font-weight: 500;
   color: #646cff;

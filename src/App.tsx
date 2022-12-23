@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from 'react'
 import './App.css'
 import Prompt from './components/Prompt'
 import Input from './components/Input'
-import Modal from './components/Modal/Modal'
+import Modal from './components/Modal'
 import Button from './components/Button'
 
 type PromptWords = {
@@ -75,6 +75,7 @@ function App() {
   }
 
   const reset = () => {
+    fetchData()
     setTimeRemaining(STARTING__TIME)
     setCurrentIndex(0)
     setPromptWords(
@@ -82,14 +83,12 @@ function App() {
         return { ...word, isCorrect: null }
       })
     )
-    fetchData()
     setHasResults(false)
   }
 
   return (
     <div className='App'>
-      {hasResults && <Modal promptWords={promptWords} reset={reset} />}
-      <Button content={'Leaderboard'} onClick={() => console.log('cool')} />
+      <Button />
       <h1>Countdown: {timeRemaining}</h1>
       <Prompt words={promptWords} currentIndex={currentIndex} />
       <Input
@@ -97,6 +96,7 @@ function App() {
         hasResults={hasResults}
         handleCountdown={handleCountdown}
       />
+      {hasResults && <Modal promptWords={promptWords} reset={reset} />}
     </div>
   )
 }

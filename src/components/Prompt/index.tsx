@@ -22,5 +22,9 @@ export default function Prompt({ words, currentIndex }: PromptProps) {
     currentWord && currentWord.scrollIntoView({ block: 'center' })
   }, [currentIndex])
 
-  return <div className='game__prompt'>{newWords}</div>
+  return (
+  <div className='prompt__container'>
+  <div className='game__prompt'>{newWords}</div>
+  </div>
+  )
 }
