@@ -1,8 +1,8 @@
-.game__btn {
-  margin-top: 20px;
-  background-image: linear-gradient(to right, rgb(255, 255, 0), rgb(255, 0, 179))
-}
-
-.game__btn:disabled {
-  opacity: .5;
+.btn__container {
+  display: flex;
+  position: relative;
+  width: 95vw;
+  align-items: center;
+  justify-content: flex-end;
+  margin: 0;
 }
