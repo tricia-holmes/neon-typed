@@ -86,7 +86,7 @@ function App() {
 
   return (
     <div className='App'>
-      {!token && <Login />}
+      {!token && <Login setToken={setToken}/>}
       {token && (
         <Game
           timeRemaining={timeRemaining}
