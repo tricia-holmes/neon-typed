@@ -1,23 +1,19 @@
-import { useState, SyntheticEvent, useEffect } from 'react'
-import './Login.css'
+import { useState, SyntheticEvent } from 'react'
+import './Signup.css'
 import { API_ROUTES, APP_ROUTES } from '../../utilis/constants'
 import { Link, useNavigate } from 'react-router-dom'
-import {
-  getTokenFromLocalStorage,
-  storeTokenInLocalStorage,
-} from '../../utilis/common'
 
-export default function Login() {
+export default function Signup() {
   const navigate = useNavigate()
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [isLoading, setIsLoading] = useState(false)
 
-  const handleLoginSubmit = async (e: SyntheticEvent) => {
+  const handleSignUpSubmit = async (e: SyntheticEvent) => {
     e.preventDefault()
     try {
-      setIsLoading(true)
-      const response: any = await fetch(API_ROUTES.LOGIN, {
+      setIsLoading(false)
+      const response: any = await fetch(API_ROUTES.SIGN_UP, {
         method: 'POST',
         body: JSON.stringify({ username, password }),
         headers: {
@@ -26,28 +22,28 @@ export default function Login() {
       })
 
       if (!response.ok) {
-        throw new Error(response)
+        const error = await response.json()
+        throw new Error(error)
       }
 
       const data: any = await response.json()
 
-      console.log('WHAT AM I', data.token)
+      console.log('WHAT AM I', data)
 
-      storeTokenInLocalStorage(data.token)
-      navigate(APP_ROUTES.GAME)
+      navigate(APP_ROUTES.LOGIN)
     } catch (err) {
-      console.error('Some error occured during signing in', err)
+      console.error('An error occured during signing up: ', err)
     } finally {
       setIsLoading(false)
     }
   }
 
   return (
-    <div className='login__background'>
-      <form className='login__form' onSubmit={(e) => handleLoginSubmit(e)}>
+    <div className='signup__background'>
+      <form className='signup__form' onSubmit={(e) => handleSignUpSubmit(e)}>
         <div className='headers__container'>
           <h1>Login</h1>
-          <h1>Signup</h1>
+          <h1>Sign Up</h1>
         </div>
         <div className='input__container'>
           <input
@@ -71,7 +67,7 @@ export default function Login() {
             required
           />
         </div>
-        <button className='login_btn'>Login</button>
+        <button className='signup_btn'>Sign up</button>
         {isLoading ? <p>Loading...</p> : null}
       </form>
     </div>
