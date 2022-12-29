@@ -1,10 +1,12 @@
 import { useState, useCallback, useEffect } from 'react'
+import { getTokenFromLocalStorage } from '../../utilis/common'
+import { API_ROUTES, APP_ROUTES } from '../../utilis/constants'
+import { useNavigate } from 'react-router-dom'
+import useUser from '../../hooks/useUser'
 import Button from '../Button'
 import Prompt from '../Prompt'
 import Input from '../Input'
 import Modal from '../Modal'
-import { API_ROUTES } from '../../utilis/constants'
-import { getTokenFromLocalStorage } from '../../utilis/common'
 
 type PromptWords = {
   word: string
@@ -12,6 +14,9 @@ type PromptWords = {
 }
 
 export default function Game() {
+  const [isLoggedOut, setisLoggedOut] = useState(false)
+  const navigate = useNavigate()
+  const { user } = useUser() // need to move this to profile component
   const STARTING__TIME = 10
   const [timeRemaining, setTimeRemaining] = useState(STARTING__TIME)
   const [isTimeRunning, setIsTimeRunning] = useState(false)
@@ -22,7 +27,7 @@ export default function Game() {
   const fetchData = useCallback(async () => {
     const token = getTokenFromLocalStorage()
     if (!token) {
-      console.error('NO VALID TOKEN')
+      // will need to add navigate to login if no token once we move user to its own component
       return
     }
 
@@ -41,6 +46,12 @@ export default function Game() {
 
     setPromptWords(wordObjs)
   }, [])
+
+  useEffect(() => {
+    if (isLoggedOut) {
+      navigate(APP_ROUTES.LOGIN)
+    }
+  }, [isLoggedOut])
 
   useEffect(() => {
     fetchData().catch(console.error) //need to add error handling
@@ -99,8 +110,15 @@ export default function Game() {
     setHasResults(false)
   }
 
+  const logout = () => {
+    localStorage.removeItem('token')
+    setisLoggedOut(true)
+  }
+
   return (
     <div>
+      <h1>{user}</h1>
+      <button onClick={logout}>Logout</button>
       <Button />
       <h1>Countdown: {timeRemaining}</h1>
       <Prompt words={promptWords} currentIndex={currentIndex} />

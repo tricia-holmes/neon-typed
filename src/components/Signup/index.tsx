@@ -1,13 +1,22 @@
-import { useState, SyntheticEvent } from 'react'
+import { useState, SyntheticEvent, useEffect } from 'react'
 import './Signup.css'
 import { API_ROUTES, APP_ROUTES } from '../../utilis/constants'
 import { Link, useNavigate } from 'react-router-dom'
+import { getTokenFromLocalStorage } from '../../utilis/common'
 
 export default function Signup() {
   const navigate = useNavigate()
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState('')
+  
+  useEffect(() => {
+    const token = getTokenFromLocalStorage()
+    if (token) {
+      navigate(APP_ROUTES.GAME)
+    }
+  }, [])
 
   const handleSignUpSubmit = async (e: SyntheticEvent) => {
     e.preventDefault()
@@ -23,7 +32,8 @@ export default function Signup() {
 
       if (!response.ok) {
         const error = await response.json()
-        throw new Error(error)
+        console.log('RESPONSE', error)
+        throw new Error(error.message)
       }
 
       const data: any = await response.json()
@@ -31,8 +41,9 @@ export default function Signup() {
       console.log('WHAT AM I', data)
 
       navigate(APP_ROUTES.LOGIN)
-    } catch (err) {
+    } catch (err: any) {
       console.error('An error occured during signing up: ', err)
+      setError(err.message)
     } finally {
       setIsLoading(false)
     }
@@ -69,6 +80,7 @@ export default function Signup() {
         </div>
         <button className='signup_btn'>Sign up</button>
         {isLoading ? <p>Loading...</p> : null}
+        {error ? <p>{error}</p> : null}
       </form>
     </div>
   )

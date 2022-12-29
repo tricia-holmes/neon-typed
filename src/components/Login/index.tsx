@@ -12,6 +12,14 @@ export default function Login() {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState('')
+
+  useEffect(() => {
+    const token = getTokenFromLocalStorage()
+    if (token) {
+      navigate(APP_ROUTES.GAME)
+    }
+  }, [])
 
   const handleLoginSubmit = async (e: SyntheticEvent) => {
     e.preventDefault()
@@ -26,7 +34,9 @@ export default function Login() {
       })
 
       if (!response.ok) {
-        throw new Error(response)
+        const error = await response.json()
+        console.log('RESPONSE', error.message)
+        throw new Error(error.message)
       }
 
       const data: any = await response.json()
@@ -35,8 +45,9 @@ export default function Login() {
 
       storeTokenInLocalStorage(data.token)
       navigate(APP_ROUTES.GAME)
-    } catch (err) {
+    } catch (err: any) {
       console.error('Some error occured during signing in', err)
+      setError(err.message)
     } finally {
       setIsLoading(false)
     }
@@ -73,6 +84,7 @@ export default function Login() {
         </div>
         <button className='login_btn'>Login</button>
         {isLoading ? <p>Loading...</p> : null}
+        {error ? <p>{error}</p> : null}
       </form>
     </div>
   )
