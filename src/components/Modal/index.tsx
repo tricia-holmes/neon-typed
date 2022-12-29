@@ -19,10 +19,7 @@ export default function Modal({
     (word) => word.isCorrect === false
   ).length
   const accuracy = ((correct / (correct + incorrect)) * 100)
-
-  console.log(accuracy)
-  console.log(!!accuracy)
-
+  
   return (
     <div className='modal'>
       <div className='modal__container'>
