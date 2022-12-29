@@ -1,10 +1,10 @@
 import { useState, SyntheticEvent, useEffect } from 'react'
-import './Signup.css'
+import './SignUp.css'
 import { API_ROUTES, APP_ROUTES } from '../../utilis/constants'
 import { Link, useNavigate } from 'react-router-dom'
 import { getTokenFromLocalStorage } from '../../utilis/common'
 
-export default function Signup() {
+export default function SignUp() {
   const navigate = useNavigate()
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')

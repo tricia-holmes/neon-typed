@@ -7,7 +7,7 @@ import {
 import './App.css'
 import Game from './components/Game/Game'
 import Login from './components/Login'
-import Signup from './components/Signup'
+import SignUp from './components/SignUp'
 import { APP_ROUTES } from './utilis/constants'
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
     <Router>
       <Routes>
         <Route path='/' element={<Navigate to={APP_ROUTES.LOGIN} />} />
-        <Route path={APP_ROUTES.SIGN_UP} element={<Signup />} />
+        <Route path={APP_ROUTES.SIGN_UP} element={<SignUp />} />
         <Route path={APP_ROUTES.LOGIN} element={<Login />} />
         <Route path={APP_ROUTES.GAME} element={<Game />} />
       </Routes>
