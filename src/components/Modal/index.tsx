@@ -19,7 +19,7 @@ export default function Modal({ promptWords, reset }: ModalPrompts) {
   const incorrect = promptWords.filter(
     (word) => word.isCorrect === false
   ).length
-  const accuracy = (correct / (correct + incorrect)) * 100
+  const accuracy = Math.round(((correct / (correct + incorrect)) * 100))
 
   const postResults = useCallback(async () => {
     console.log(WPM, accuracy)
@@ -54,7 +54,7 @@ export default function Modal({ promptWords, reset }: ModalPrompts) {
         <p>WPM: {WPM}</p>
         <p>CORRECT: {correct}</p>
         <p>INCORRECT: {incorrect}</p>
-        <p>Accuracy: {accuracy ? accuracy.toFixed(2) : 0}%</p>
+        <p>Accuracy: {accuracy}%</p>
       </div>
     </div>
   )

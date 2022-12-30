@@ -1,8 +1,7 @@
 import { useCallback, useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 import useUser from '../../hooks/useUser'
 import { getTokenFromLocalStorage } from '../../utilis/common'
-import { API_ROUTES, APP_ROUTES } from '../../utilis/constants'
+import { API_ROUTES } from '../../utilis/constants'
 import './Profile.css'
 
 type ProfilePromots = {
@@ -25,11 +24,19 @@ export default function Profile({ setShowProfile }: ProfilePromots) {
     const data = await response.json()
 
     const tests = data.map((test: any, index: number) => {
+      const date = new Date(test.createdAt)
+      const timestamp = `${date.toLocaleDateString(
+        'en-US'
+      )} ${date.toLocaleTimeString('en-US', {
+        hour: '2-digit',
+        minute: '2-digit',
+      })}`
+
       return (
         <tr key={`test ${index}`}>
           <td>{test.wpm}</td>
-          <td>{test.accuracy}</td>
-          <td>{test.createdAt}</td>
+          <td>{`${test.accuracy}%`}</td>
+          <td>{timestamp}</td>
         </tr>
       )
     })
