@@ -4,7 +4,8 @@ export const API_ROUTES = {
   SIGN_UP: `${API_URL}/signup`,
   LOGIN: `${API_URL}/login`,
   GET_WORDS: `${API_URL}/words`,
-  GET_PROFILE: `${API_URL}/profile`
+  GET_PROFILE: `${API_URL}/profile`,
+  POST_TEST: `${API_URL}/typing-tests`
 }
 
 export const APP_ROUTES = {
