@@ -7,6 +7,7 @@ import Button from '../Button'
 import Prompt from '../Prompt'
 import Input from '../Input'
 import Modal from '../Modal'
+import Profile from '../Profile'
 
 type PromptWords = {
   word: string
@@ -23,6 +24,7 @@ export default function Game() {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [promptWords, setPromptWords] = useState<PromptWords[]>([])
   const [hasResults, setHasResults] = useState(false)
+  const [showProfile, setShowProfile] = useState(false)
 
   const fetchData = useCallback(async () => {
     const token = getTokenFromLocalStorage()
@@ -117,8 +119,10 @@ export default function Game() {
 
   return (
     <div>
+      {showProfile && <Profile setShowProfile={setShowProfile} />}
       <h1>{user}</h1>
       <button onClick={logout}>Logout</button>
+      <button onClick={() => setShowProfile(true)}>Profile</button>
       <Button />
       <h1>Countdown: {timeRemaining}</h1>
       <Prompt words={promptWords} currentIndex={currentIndex} />
