@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:8000'
+const API_URL = 'http://localhost:8000' // https://typingtest-api.herokuapp.com
 
 export const API_ROUTES = {
   SIGN_UP: `${API_URL}/signup`,
