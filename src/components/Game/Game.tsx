@@ -2,7 +2,6 @@ import { useState, useCallback, useEffect } from 'react'
 import { getTokenFromLocalStorage } from '../../utilis/common'
 import { API_ROUTES, APP_ROUTES } from '../../utilis/constants'
 import { useNavigate } from 'react-router-dom'
-import useUser from '../../hooks/useUser'
 import Button from '../Button'
 import Prompt from '../Prompt'
 import Input from '../Input'
@@ -15,10 +14,9 @@ type PromptWords = {
 }
 
 export default function Game() {
-  const [isLoggedOut, setisLoggedOut] = useState(false)
   const navigate = useNavigate()
-  const { user } = useUser() // need to move this to profile component
   const STARTING__TIME = 10
+  const [isLoggedOut, setisLoggedOut] = useState(false)
   const [timeRemaining, setTimeRemaining] = useState(STARTING__TIME)
   const [isTimeRunning, setIsTimeRunning] = useState(false)
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -29,7 +27,7 @@ export default function Game() {
   const fetchData = useCallback(async () => {
     const token = getTokenFromLocalStorage()
     if (!token) {
-      // will need to add navigate to login if no token once we move user to its own component
+      navigate(APP_ROUTES.LOGIN)
       return
     }
 
@@ -120,7 +118,6 @@ export default function Game() {
   return (
     <div>
       {showProfile && <Profile setShowProfile={setShowProfile} />}
-      <h1>{user}</h1>
       <button onClick={logout}>Logout</button>
       <button onClick={() => setShowProfile(true)}>Profile</button>
       <Button />

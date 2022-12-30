@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import useUser from '../../hooks/useUser'
 import { getTokenFromLocalStorage } from '../../utilis/common'
 import { API_ROUTES, APP_ROUTES } from '../../utilis/constants'
 import './Profile.css'
@@ -9,15 +10,11 @@ type ProfilePromots = {
 }
 
 export default function Profile({ setShowProfile }: ProfilePromots) {
-  const navigate = useNavigate()
   const [history, setHistory] = useState([])
+  const { user } = useUser()
 
   const fetchHistory = useCallback(async () => {
     const token = getTokenFromLocalStorage()
-    if (!token) {
-      navigate(APP_ROUTES.LOGIN)
-      return
-    }
 
     const response = await fetch(API_ROUTES.GET_HISTORY, {
       method: 'GET',
@@ -48,6 +45,9 @@ export default function Profile({ setShowProfile }: ProfilePromots) {
     <div className='profile__modal'>
       <div className='profile__background'>
         <h1 className='profile__text'>Profile</h1>
+        <p style={{ fontSize: '.9rem' }} className='profile__text'>
+          {user}
+        </p>
         <table>
           <tbody>
             <tr>
