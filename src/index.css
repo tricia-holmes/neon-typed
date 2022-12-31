@@ -21,6 +21,24 @@
   font-weight: 400;
 }
 
+@font-face {
+  font-family: neon;
+  src: url('./assets/fonts/neon.ttf');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Space Mono';
+  src: url('./assets/fonts/SpaceMono-Regular.ttf');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: Nunito;
+  src: url('./assets/fonts/Nunito-VariableFont_wght.ttf');
+  font-weight: 400;
+}
+
 a {
   font-weight: 500;
   color: #646cff;
