@@ -15,6 +15,11 @@
   -webkit-text-size-adjust: 100%;
 }
 
+a {
+  text-decoration: none;
+  color: #646cff;
+}
+
 @font-face {
   font-family: Press2Play;
   src: url('./assets/fonts/PressStart2P-Regular.ttf');
@@ -38,7 +43,6 @@
   src: url('./assets/fonts/Nunito-VariableFont_wght.ttf');
   font-weight: 400;
 }
-
 
 body {
   margin: 0;
@@ -72,3 +76,39 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes colorChange {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes neon {
+  0%,
+  45%,
+  55%,
+  68%,
+  100% {
+    text-shadow: 0 0 2px #fff, 0 0 10px #fff, 0 0 20px #ff0080, 0 0 40px #ff0080,
+      0 0 0 #ff0080, 0 0 44px #ff0080, 0 0 75px #ff0090;
+  }
+
+  50%,
+  60% {
+    text-shadow: none;
+  }
+}
