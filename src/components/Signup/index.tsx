@@ -4,6 +4,8 @@ import { API_ROUTES, APP_ROUTES } from '../../utilis/constants'
 import { Link, useNavigate } from 'react-router-dom'
 import { getTokenFromLocalStorage } from '../../utilis/common'
 
+type SignUp = JSX.IntrinsicElements['div']
+
 export default function SignUp() {
   const navigate = useNavigate()
   const [username, setUsername] = useState('')
