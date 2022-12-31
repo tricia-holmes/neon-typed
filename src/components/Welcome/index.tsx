@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+import { APP_ROUTES } from '../../utilis/constants'
 import './Welcome.css'
 
-type Title = JSX.IntrinsicElements[keyof JSX.IntrinsicElements]
+type Title = JSX.IntrinsicElements['span']
 
 export default function Welcome() {
   const [title, setTitle] = useState<Title[]>([])
@@ -12,7 +14,7 @@ export default function Welcome() {
       .map((letter: string, index: number) => {
         const color = `hsla(${Math.random() * 360}, 100%, 68%, 1)`
         const animation = `flicker ${Math.random() * 4}s linear both`
-        console.log(color)
+
         return (
           <span
             key={`span ${index}`}
@@ -28,20 +30,15 @@ export default function Welcome() {
   }, [])
 
   return (
-    <>
+    <div className='welcome'>
       <div className='title__container'>
         <>{title}</>
       </div>
       <div className='text__container'>
-        <p
-          className='welcome__text'
-          onClick={() => {
-            console.log('click!')
-          }}
-        >
+        <Link className='welcome__text' to={APP_ROUTES.LOGIN}>
           Click here to enter
-        </p>
+        </Link>
       </div>
-    </>
+    </div>
   )
 }

@@ -13,6 +13,10 @@ body {
   background-color: #000;
 }
 
+.welcome {
+  animation: fade-in 2s forwards;
+}
+
 .title__container {
   margin-top: 10%;
   margin-bottom: 10%;
@@ -40,16 +44,30 @@ body {
   font-size: 2.5rem;
   line-height: normal;
   text-transform: uppercase;
+  text-decoration: none;
   cursor: pointer;
   animation: typing 2s steps(29, end) 1s normal both,
     blinking 600ms steps(29, end) infinite;
-    animation-delay: 3s;
+  animation-delay: 3s;
 }
 
 .welcome__text:hover {
   color: rgba(92, 255, 236, 0.889);
   text-shadow: 0 0 0.5vw #082180, 0 0 1.5vw #082180, 0 0 5vw #082180,
     0 0 5vw #082180, 0 0 0.2vw #082180, 0.5vw 0.5vw 0.1vw #0a3940;
+}
+
+.welcome__text:active {
+  transform: scale(.98);
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 @keyframes flicker {
