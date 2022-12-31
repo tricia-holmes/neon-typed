@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:8000' // https://typingtest-api.herokuapp.com
+const API_URL = import.meta.env.VITE_API_URL
 
 export const API_ROUTES = {
   SIGN_UP: `${API_URL}/signup`,
@@ -15,5 +15,4 @@ export const APP_ROUTES = {
   SIGN_UP: '/signup',
   LOGIN: '/login',
   GAME: '/game',
-
 }
