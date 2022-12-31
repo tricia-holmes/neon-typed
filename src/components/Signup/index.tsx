@@ -1,12 +1,10 @@
 import { useState, SyntheticEvent, useEffect } from 'react'
-import './SignUp.css'
+import './Signup.css'
 import { API_ROUTES, APP_ROUTES } from '../../utilis/constants'
 import { Link, useNavigate } from 'react-router-dom'
 import { getTokenFromLocalStorage } from '../../utilis/common'
 
-type SignUp = JSX.IntrinsicElements['div']
-
-export default function SignUp() {
+export default function Signup() {
   const navigate = useNavigate()
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
@@ -20,7 +18,7 @@ export default function SignUp() {
     }
   }, [])
 
-  const handleSignUpSubmit = async (e: SyntheticEvent) => {
+  const handleSignupSubmit = async (e: SyntheticEvent) => {
     e.preventDefault()
     try {
       setIsLoading(false)
@@ -53,7 +51,7 @@ export default function SignUp() {
 
   return (
     <div className='signup__background'>
-      <form className='signup__form' onSubmit={(e) => handleSignUpSubmit(e)}>
+      <form className='signup__form' onSubmit={(e) => handleSignupSubmit(e)}>
         <div className='headers__container'>
           <h1>Login</h1>
           <h1>Sign Up</h1>
