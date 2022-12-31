@@ -7,7 +7,7 @@ import {
 import './App.css'
 import Game from './components/Game/Game'
 import Login from './components/Login'
-import SignUp from './components/Signup'
+import SignUp from './components/SignUp'
 import Welcome from './components/Welcome'
 import { APP_ROUTES } from './utilis/constants'
 

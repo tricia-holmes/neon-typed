@@ -89,7 +89,7 @@ export default function Login() {
       </div>
       <div className='pink'></div>
       <h1 className='left-title'>Neon Typed</h1>
-      <h1 className='right-title'>Neon Typed</h1>
-    </div>
+      <h1 className='right-title'>Neon Typed</h1> 
+   </div>
   )
 }
