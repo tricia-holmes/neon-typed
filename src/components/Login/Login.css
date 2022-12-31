@@ -45,9 +45,8 @@ a:hover {
 .left-title {
   top: 2%;
   left: 1%;
-  text-shadow: 0 0 2px #fff, 0 0 10px #fff, 0 0 20px rgb(255, 0, 0),
-    0 0 40px rgb(255, 0, 0), 0 0 0 rgb(255, 0, 0), 0 0 44px rgb(255, 0, 0),
-    0 0 75px rgb(188, 0, 0);
+  text-shadow: 0 0 2px #fff, 0 0 10px #fff, 0 0 20px #ff0080, 0 0 40px #ff0080,
+      0 0 0 #ff0080, 0 0 44px #ff0080, 0 0 75px #ff0090;
   animation: left-neon 6s infinite;
   animation-delay: 2s;
 }
