@@ -17,7 +17,7 @@ body {
   animation: fade-in 2s forwards;
 }
 
-.title__container {
+.title__container { 
   margin-top: 10%;
   margin-bottom: 10%;
 }
@@ -32,7 +32,6 @@ body {
   align-items: center;
   justify-content: center;
   width: 100%;
-  /* background-color: hotpink; */
 }
 
 .welcome__text {
@@ -59,15 +58,6 @@ body {
 
 .welcome__text:active {
   transform: scale(.98);
-}
-
-@keyframes fade-in {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
 }
 
 @keyframes flicker {
