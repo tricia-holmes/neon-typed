@@ -35,18 +35,14 @@ export default function Login() {
 
       if (!response.ok) {
         const error = await response.json()
-        console.log('RESPONSE', error.message)
         throw new Error(error.message)
       }
 
       const data: any = await response.json()
 
-      console.log('WHAT AM I', data.token)
-
       storeTokenInLocalStorage(data.token)
       navigate(APP_ROUTES.GAME)
     } catch (err: any) {
-      console.error('Some error occured during signing in', err)
       setError(err.message)
     } finally {
       setIsLoading(false)
@@ -55,37 +51,45 @@ export default function Login() {
 
   return (
     <div className='login__background'>
-      <form className='login__form' onSubmit={(e) => handleLoginSubmit(e)}>
-        <div className='headers__container'>
-          <h1>Login</h1>
-          <h1>Signup</h1>
-        </div>
-        <div className='input__container'>
-          <input
-            type='text'
-            id='username'
-            placeholder='username'
-            onChange={(e) => setUsername(e.target.value)}
-            value={username}
-            autoComplete='off'
-            required
-          />
-        </div>
-        <div className='input__container'>
-          <input
-            type='password'
-            id='password'
-            placeholder='password'
-            onChange={(e) => setPassword(e.target.value)}
-            value={password}
-            autoComplete='off'
-            required
-          />
-        </div>
-        <button className='login_btn'>Login</button>
-        {isLoading ? <p>Loading...</p> : null}
-        {error ? <p>{error}</p> : null}
-      </form>
+      <div className='blue'>
+        <form className='login__form' onSubmit={(e) => handleLoginSubmit(e)}>
+          <div className='headers__container'>
+            <h1 style={{letterSpacing: '5px'}}>Login</h1>
+          </div>
+          <div className='input__container'>
+            <input
+              type='text'
+              id='username'
+              placeholder='username'
+              onChange={(e) => setUsername(e.target.value)}
+              value={username}
+              autoComplete='off'
+              required
+            />
+          </div>
+          <div className='input__container'>
+            <input
+              type='password'
+              id='password'
+              placeholder='password'
+              onChange={(e) => setPassword(e.target.value)}
+              value={password}
+              autoComplete='off'
+              required
+            />
+          </div>
+          <button className='login_btn'>Login</button>
+          {isLoading ? <p>Loading...</p> : null}
+          {error ? <p>{error}</p> : null}
+          <p className='login__question'>
+            Don't have an account?
+            <Link to={APP_ROUTES.SIGN_UP}> Sign up here!</Link>
+          </p>
+        </form>
+      </div>
+      <div className='pink'></div>
+      <h1 className='left-title'>Neon Typed</h1>
+      <h1 className='right-title'>Neon Typed</h1>
     </div>
   )
 }

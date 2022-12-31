@@ -38,22 +38,6 @@
   color: white;
   animation: neon 5s infinite;
 }
-
-@keyframes neon {
-  0%,
-  45%,
-  55%,
-  68%,
-  100% {
-    text-shadow: 0 0 2px #fff, 0 0 10px #fff, 0 0 20px #ff0080, 0 0 40px #ff0080,
-      0 0 0 #ff0080, 0 0 44px #ff0080, 0 0 75px #ff0090;
-  }
-  50%,
-  60% {
-    text-shadow: none;
-  }
-}
-
 table {
   width: 80%;
   height: 75%;
