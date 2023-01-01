@@ -11,7 +11,6 @@ export const API_ROUTES = {
 }
 
 export const APP_ROUTES = {
-  WELCOME: '/welcome',
   SIGN_UP: '/signup',
   LOGIN: '/login',
   GAME: '/game',
