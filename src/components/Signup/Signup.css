@@ -1,3 +1,14 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+a:hover {
+  color: rgb(255, 52, 153);
+  text-shadow: 0 0 0.5vw #082180, 0 0 1.5vw #082180, 0 0 5vw #082180,
+    0 0 5vw #082180, 0 0 0.2vw #082180, 0.5vw 0.5vw 0.1vw #0a3940;
+}
+
 .signup__background {
   display: flex;
   flex-direction: column;
@@ -5,39 +16,57 @@
   justify-content: center;
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(45deg, cyan, 25%, hotpink 50%, yellow 100%);
+  animation: fade-in 3s forwards;
+  font-family: 'Space Mono';
+  line-height: 2.5;
 }
 
 .signup__form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative;
+  position: absolute;
   text-align: center;
-  width: 30vw;
-  min-height: 400px;
-  height: 45vh;
-  padding: 40px;
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-  border-right: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(5px);
+  z-index: 1000;
+}
+
+.left-title,
+.right-title {
+  font-family: 'neon';
+  font-size: 4.3rem;
+  z-index: 9999;
+  position: absolute;
+  text-orientation: upright;
+  writing-mode: vertical-lr;
+  text-align: center;
+  color: white;
+}
+
+.left-title {
+  top: 2%;
+  left: 1%;
+  text-shadow: 0 0 2px #fff, 0 0 10px #fff, 0 0 20px #ff0080, 0 0 40px #ff0080,
+      0 0 0 #ff0080, 0 0 44px #ff0080, 0 0 75px #ff0090;
+  animation: left-neon 6s infinite;
+  animation-delay: 2s;
+}
+
+.right-title {
+  bottom: 2%;
+  right: 1%;
+  transform: scale(-1, 1);
+  text-shadow: 0 0 2px #fff, 0 0 10px #fff, 0 0 20px #01ffc3, 0 0 40px #01ffc3,
+    0 0 0 #01ffc3, 0 0 44px #01ffc3, 0 0 75px #00c99a;
+  animation: right-neon 6s infinite;
+  animation-delay: 4s;
 }
 
 .signup__form h1 {
   position: relative;
-  color: yellow;
   font-size: 2.5rem;
   text-transform: uppercase;
   letter-spacing: 1px;
-  /* margin-bottom: 3%; */
-}
-
-.signup__form h1:hover {
-color: red;
+  margin-bottom: 3%;
 }
 
 .signup__form h1::before {
@@ -46,7 +75,7 @@ color: red;
   bottom: -10px;
   width: 50%;
   height: 10%;
-  background: white;
+  background: #01ffc3;
 }
 
 .headers__container {
@@ -57,7 +86,7 @@ color: red;
 
 .input__container {
   width: 60%;
-  margin-top:4%;
+  margin-top: 4%;
 }
 
 .signup__form input {
@@ -71,6 +100,7 @@ color: red;
   border-radius: 35px;
   letter-spacing: 1px;
   font-size: 1rem;
+  font-family: 'Space Mono';
 }
 
 .signup__form input::placeholder {
@@ -78,8 +108,94 @@ color: red;
 }
 
 .signup_btn {
-margin-top: 4%;
-letter-spacing: 5px;
-text-transform: uppercase;
+  margin-top: 4%;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+}
 
+.signup__question {
+  margin-top: 8%;
+}
+
+/* blue is CUBE, pink is BLUR */
+.blue {
+  position: relative;
+}
+
+.pink {
+  position: absolute;
+  z-index: -500;
+  filter: blur(10px);
+}
+
+.blue,
+.pink {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40vw;
+  max-width: 50vw;
+  height: 50vh;
+  /* max-height: 50vh; */
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.blue::before,
+.pink::before {
+  position: absolute;
+  content: '';
+  height: 200%;
+  width: 140%;
+  background: linear-gradient(#01ffc3 20%, hotpink 80%);
+  animation: glowing 6s infinite linear;
+}
+
+.blue::after {
+  position: absolute;
+  background: #000;
+  content: '';
+  border-radius: 18px;
+  inset: 4px;
+}
+
+/* @keyframes glowing {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+} */
+
+@keyframes left-neon {
+  0%,
+  45%,
+  55%,
+  68%,
+  100% {
+    text-shadow: 0 0 2px #fff, 0 0 10px #fff, 0 0 20px #ff0080, 0 0 40px #ff0080,
+      0 0 0 #ff0080, 0 0 44px #ff0080, 0 0 75px #ff0090;
+  }
+
+  50%,
+  60% {
+    text-shadow: none;
+  }
+}
+
+@keyframes right-neon {
+  0%,
+  45%,
+  55%,
+  68%,
+  100% {
+    text-shadow: 0 0 2px #fff, 0 0 10px #fff, 0 0 20px #01ffc3, 0 0 40px #01ffc3,
+      0 0 0 #01ffc3, 0 0 44px #01ffc3, 0 0 75px #00c99a;
+  }
+
+  50%,
+  60% {
+    text-shadow: none;
+  }
 }

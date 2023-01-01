@@ -78,7 +78,7 @@ export default function Login() {
               required
             />
           </div>
-          <button className='login_btn'>Login</button>
+          <button className='login_btn'>Submit</button>
           {isLoading ? <p>Loading...</p> : null}
           {error ? <p>{error}</p> : null}
           <p className='login__question'>

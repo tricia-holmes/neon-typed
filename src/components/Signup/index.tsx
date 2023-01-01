@@ -10,7 +10,7 @@ export default function Signup() {
   const [password, setPassword] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState('')
-  
+
   useEffect(() => {
     const token = getTokenFromLocalStorage()
     if (token) {
@@ -51,37 +51,45 @@ export default function Signup() {
 
   return (
     <div className='signup__background'>
-      <form className='signup__form' onSubmit={(e) => handleSignupSubmit(e)}>
-        <div className='headers__container'>
-          <h1>Login</h1>
-          <h1>Sign Up</h1>
-        </div>
-        <div className='input__container'>
-          <input
-            type='text'
-            id='username'
-            placeholder='username'
-            onChange={(e) => setUsername(e.target.value)}
-            value={username}
-            autoComplete='off'
-            required
-          />
-        </div>
-        <div className='input__container'>
-          <input
-            type='password'
-            id='password'
-            placeholder='password'
-            onChange={(e) => setPassword(e.target.value)}
-            value={password}
-            autoComplete='off'
-            required
-          />
-        </div>
-        <button className='signup_btn'>Sign up</button>
-        {isLoading ? <p>Loading...</p> : null}
-        {error ? <p>{error}</p> : null}
-      </form>
+      <div className='blue'>
+        <form className='signup__form' onSubmit={(e) => handleSignupSubmit(e)}>
+          <div className='headers__container'>
+            <h1>Sign Up</h1>
+          </div>
+          <div className='input__container'>
+            <input
+              type='text'
+              id='username'
+              placeholder='username'
+              onChange={(e) => setUsername(e.target.value)}
+              value={username}
+              autoComplete='off'
+              required
+            />
+          </div>
+          <div className='input__container'>
+            <input
+              type='password'
+              id='password'
+              placeholder='password'
+              onChange={(e) => setPassword(e.target.value)}
+              value={password}
+              autoComplete='off'
+              required
+            />
+          </div>
+          <button className='signup_btn'>Sign up</button>
+          {isLoading ? <p>Loading...</p> : null}
+          {error ? <p>{error}</p> : null}
+          <p className='login__question'>
+            Already have an account?
+            <Link to={APP_ROUTES.LOGIN}> Login here!</Link>
+          </p>
+        </form>
+      </div>
+      <div className='pink'></div>
+      <h1 className='left-title'>Neon Typed</h1>
+      <h1 className='right-title'>Neon Typed</h1> 
     </div>
   )
 }
