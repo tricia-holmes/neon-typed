@@ -51,7 +51,7 @@ export default function Signup() {
 
   return (
     <div className='signup__background'>
-      <div className='blue'>
+      <div className='yellow'>
         <form className='signup__form' onSubmit={(e) => handleSignupSubmit(e)}>
           <div className='headers__container'>
             <h1>Sign Up</h1>
@@ -83,13 +83,16 @@ export default function Signup() {
           {error ? <p>{error}</p> : null}
           <p className='login__question'>
             Already have an account?
-            <Link to={APP_ROUTES.LOGIN}> Login here!</Link>
+            <Link to={APP_ROUTES.LOGIN} className='signup__link'>
+              {' '}
+              Login here!
+            </Link>
           </p>
         </form>
       </div>
-      <div className='pink'></div>
-      <h1 className='left-title'>Neon Typed</h1>
-      <h1 className='right-title'>Neon Typed</h1> 
+      <div className='purple'></div>
+      <h1 className='signup__left-title'>Neon</h1>
+      <h1 className='signup__right-title'>Typed</h1>
     </div>
   )
 }

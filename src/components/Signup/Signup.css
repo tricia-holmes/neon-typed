@@ -3,12 +3,6 @@
   padding: 0;
 }
 
-a:hover {
-  color: rgb(255, 52, 153);
-  text-shadow: 0 0 0.5vw #082180, 0 0 1.5vw #082180, 0 0 5vw #082180,
-    0 0 5vw #082180, 0 0 0.2vw #082180, 0.5vw 0.5vw 0.1vw #0a3940;
-}
-
 .signup__background {
   display: flex;
   flex-direction: column;
@@ -30,34 +24,35 @@ a:hover {
   z-index: 1000;
 }
 
-.left-title,
-.right-title {
+.signup__left-title,
+.signup__right-title {
   font-family: 'neon';
   font-size: 4.3rem;
   z-index: 9999;
   position: absolute;
-  text-orientation: upright;
-  writing-mode: vertical-lr;
+  /* text-orientation: sideways; */
+  /* writing-mode: vertical-lr; */
   text-align: center;
   color: white;
+  letter-spacing: 20px;
 }
 
-.left-title {
+.signup__left-title {
   top: 2%;
   left: 1%;
-  text-shadow: 0 0 2px #fff, 0 0 10px #fff, 0 0 20px #ff0080, 0 0 40px #ff0080,
-      0 0 0 #ff0080, 0 0 44px #ff0080, 0 0 75px #ff0090;
-  animation: left-neon 6s infinite;
+  text-shadow: 0 0 2px #fff, 0 0 10px #fff, 0 0 20px #FDDA0D, 0 0 40px #FDDA0D,
+  0 0 0 #FDDA0D, 0 0 44px #FDDA0D, 0 0 75px #eac806;
+  animation: signup__left-neon 6s infinite;
   animation-delay: 2s;
 }
 
-.right-title {
+.signup__right-title {
   bottom: 2%;
   right: 1%;
-  transform: scale(-1, 1);
-  text-shadow: 0 0 2px #fff, 0 0 10px #fff, 0 0 20px #01ffc3, 0 0 40px #01ffc3,
-    0 0 0 #01ffc3, 0 0 44px #01ffc3, 0 0 75px #00c99a;
-  animation: right-neon 6s infinite;
+  /* transform: scale(-1, 1); */
+  text-shadow: 0 0 2px #fff, 0 0 10px #fff, 0 0 20px #7F00FF, 0 0 40px #7F00FF,
+  0 0 0 #7F00FF, 0 0 44px #7F00FF, 0 0 75px #6800d0;
+  animation: signup__right-neon 6s infinite;
   animation-delay: 4s;
 }
 
@@ -75,7 +70,7 @@ a:hover {
   bottom: -10px;
   width: 50%;
   height: 10%;
-  background: #01ffc3;
+  background: #FDDA0D;
 }
 
 .headers__container {
@@ -117,18 +112,28 @@ a:hover {
   margin-top: 8%;
 }
 
-/* blue is CUBE, pink is BLUR */
-.blue {
+.signup__link {
+  color: #7F00FF;
+}
+
+.signup__link:hover {
+  color: rgb(237, 147, 255);
+  text-shadow: 0 0 0.5vw #082180, 0 0 1.5vw #082180, 0 0 5vw #082180,
+    0 0 5vw #082180, 0 0 0.2vw #082180, 0.5vw 0.5vw 0.1vw #0a3940;
+}
+
+/* blue is CUBE, purple is BLUR */
+.yellow {
   position: relative;
 }
 
-.pink {
+.purple {
   position: absolute;
   z-index: -500;
   filter: blur(10px);
 }
 
-.blue,
+.yellow,
 .pink {
   display: flex;
   justify-content: center;
@@ -141,17 +146,17 @@ a:hover {
   overflow: hidden;
 }
 
-.blue::before,
-.pink::before {
+.yellow::before,
+.purple::before {
   position: absolute;
   content: '';
   height: 200%;
   width: 140%;
-  background: linear-gradient(#01ffc3 20%, hotpink 80%);
+  background: linear-gradient(#FDDA0D 20%, #7F00FF  80%);
   animation: glowing 6s infinite linear;
 }
 
-.blue::after {
+.yellow::after {
   position: absolute;
   background: #000;
   content: '';
@@ -168,14 +173,14 @@ a:hover {
   }
 } */
 
-@keyframes left-neon {
+@keyframes signup__left-neon {
   0%,
   45%,
   55%,
   68%,
   100% {
-    text-shadow: 0 0 2px #fff, 0 0 10px #fff, 0 0 20px #ff0080, 0 0 40px #ff0080,
-      0 0 0 #ff0080, 0 0 44px #ff0080, 0 0 75px #ff0090;
+    text-shadow: 0 0 2px #fff, 0 0 10px #fff, 0 0 20px #FDDA0D, 0 0 40px #FDDA0D,
+    0 0 0 #FDDA0D, 0 0 44px #FDDA0D, 0 0 75px #eac806;
   }
 
   50%,
@@ -184,14 +189,14 @@ a:hover {
   }
 }
 
-@keyframes right-neon {
+@keyframes signup__right-neon {
   0%,
   45%,
   55%,
   68%,
   100% {
-    text-shadow: 0 0 2px #fff, 0 0 10px #fff, 0 0 20px #01ffc3, 0 0 40px #01ffc3,
-      0 0 0 #01ffc3, 0 0 44px #01ffc3, 0 0 75px #00c99a;
+    text-shadow: 0 0 2px #fff, 0 0 10px #fff, 0 0 20px #7F00FF, 0 0 40px #7F00FF,
+    0 0 0 #7F00FF, 0 0 44px #7F00FF, 0 0 75px #6800d0;
   }
 
   50%,

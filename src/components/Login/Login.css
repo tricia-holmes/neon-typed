@@ -46,9 +46,9 @@ a:hover {
   top: 2%;
   left: 1%;
   text-shadow: 0 0 2px #fff, 0 0 10px #fff, 0 0 20px #ff0080, 0 0 40px #ff0080,
-      0 0 0 #ff0080, 0 0 44px #ff0080, 0 0 75px #ff0090;
+    0 0 0 #ff0080, 0 0 44px #ff0080, 0 0 75px #ff0090;
   animation: left-neon 6s infinite;
-  animation-delay: 2s;
+  animation-delay: 0.5s;
 }
 
 .right-title {
@@ -58,7 +58,7 @@ a:hover {
   text-shadow: 0 0 2px #fff, 0 0 10px #fff, 0 0 20px #01ffc3, 0 0 40px #01ffc3,
     0 0 0 #01ffc3, 0 0 44px #01ffc3, 0 0 75px #00c99a;
   animation: right-neon 6s infinite;
-  animation-delay: 4s;
+  animation-delay: 2s;
 }
 
 .login__form h1 {
