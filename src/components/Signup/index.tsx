@@ -97,8 +97,10 @@ export default function Signup() {
         </form>
       </div>
       <div className='purple'></div>
-      <h1 className='signup__left-title'>Neon</h1>
-      <h1 className='signup__right-title'>Typed</h1>
+      <h1 className='signup__left-title'>
+        <Link to='/'>Neon</Link>
+      </h1>
+      <h1 className='signup__right-title'><Link to='/'>Typed</Link></h1>
     </div>
   )
 }
