@@ -21,6 +21,19 @@ export default function Login() {
     }
   }, [])
 
+  useEffect(() => {
+    const token = getTokenFromLocalStorage()
+    if (token) {
+      navigate(APP_ROUTES.GAME)
+    }
+  }, [])
+
+  useEffect(() => {
+    if (error) {
+      setError('')
+    }
+  }, [username, password])
+
   const handleLoginSubmit = async (e: SyntheticEvent) => {
     e.preventDefault()
     try {
@@ -78,12 +91,12 @@ export default function Login() {
               required
             />
           </div>
+          {error ? <p className='login__error'>{error}</p> : null}
           <button className='login_btn'>Submit</button>
           {isLoading ? <p>Loading...</p> : null}
-          {error ? <p>{error}</p> : null}
           <p className='login__question'>
             Don't have an account?
-            <Link to={APP_ROUTES.SIGN_UP}> Sign up here!</Link>
+            <Link to={APP_ROUTES.SIGN_UP} className='login__link'> Sign up here!</Link>
           </p>
         </form>
       </div>
