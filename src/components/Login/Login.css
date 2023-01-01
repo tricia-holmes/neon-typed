@@ -129,7 +129,7 @@
     0 0 5vw #082180, 0 0 0.2vw #082180, 0.5vw 0.5vw 0.1vw #0a3940;
 }
 
-.loading {
+.login__loading {
   margin-top: 5%;
   font-size: 15px;
   text-shadow: 0 0 2px #fff, 0 0 10px #fff, 0 0 20px rgb(0, 255, 0), 0 0 40px rgb(0, 255, 0),

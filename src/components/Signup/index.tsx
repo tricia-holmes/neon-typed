@@ -86,7 +86,7 @@ export default function Signup() {
           </div>
           {error ? <p className='signup__error'>{error}</p> : null}
           <button className='signup_btn'>Submit</button>
-          {isLoading ? <p className='loading'>Loading...</p> : null}
+          {isLoading ? <p className='signup__loading'>Loading...</p> : null}
           <p className='signup__question'>
             Already have an account?
             <Link to={APP_ROUTES.LOGIN} className='signup__link'>
