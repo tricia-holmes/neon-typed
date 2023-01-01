@@ -27,11 +27,9 @@
 .signup__left-title,
 .signup__right-title {
   font-family: 'neon';
-  font-size: 4.3rem;
+  font-size: 5.3rem;
   z-index: 9999;
   position: absolute;
-  /* text-orientation: sideways; */
-  /* writing-mode: vertical-lr; */
   text-align: center;
   color: white;
   letter-spacing: 20px;
@@ -40,8 +38,8 @@
 .signup__left-title {
   top: 2%;
   left: 1%;
-  text-shadow: 0 0 2px #fff, 0 0 10px #fff, 0 0 20px #FDDA0D, 0 0 40px #FDDA0D,
-  0 0 0 #FDDA0D, 0 0 44px #FDDA0D, 0 0 75px #eac806;
+  text-shadow: 0 0 2px #fff, 0 0 10px #fff, 0 0 20px #fdda0d, 0 0 40px #fdda0d,
+    0 0 0 #fdda0d, 0 0 44px #fdda0d, 0 0 75px #eac806;
   animation: signup__left-neon 6s infinite;
   animation-delay: 2s;
 }
@@ -49,9 +47,8 @@
 .signup__right-title {
   bottom: 2%;
   right: 1%;
-  /* transform: scale(-1, 1); */
-  text-shadow: 0 0 2px #fff, 0 0 10px #fff, 0 0 20px #7F00FF, 0 0 40px #7F00FF,
-  0 0 0 #7F00FF, 0 0 44px #7F00FF, 0 0 75px #6800d0;
+  text-shadow: 0 0 2px #fff, 0 0 10px #fff, 0 0 20px #7f00ff, 0 0 40px #7f00ff,
+    0 0 0 #7f00ff, 0 0 44px #7f00ff, 0 0 75px #6800d0;
   animation: signup__right-neon 6s infinite;
   animation-delay: 4s;
 }
@@ -61,7 +58,7 @@
   font-size: 2.5rem;
   text-transform: uppercase;
   letter-spacing: 1px;
-  margin-bottom: 3%;
+  margin-bottom: 4%;
 }
 
 .signup__form h1::before {
@@ -70,7 +67,7 @@
   bottom: -10px;
   width: 50%;
   height: 10%;
-  background: #FDDA0D;
+  background: #fdda0d;
 }
 
 .headers__container {
@@ -82,6 +79,7 @@
 .input__container {
   width: 60%;
   margin-top: 4%;
+  margin-right: 9%;
 }
 
 .signup__form input {
@@ -96,6 +94,7 @@
   letter-spacing: 1px;
   font-size: 1rem;
   font-family: 'Space Mono';
+  margin-top: 4%;
 }
 
 .signup__form input::placeholder {
@@ -103,17 +102,24 @@
 }
 
 .signup_btn {
-  margin-top: 4%;
+  margin-top: 5%;
   letter-spacing: 5px;
   text-transform: uppercase;
 }
 
+.signup__error {
+  font-size: 15px;
+  margin-top: 3%;
+  text-shadow: 0 0 2px #fff, 0 0 10px #fff, 0 0 20px red, 0 0 40px red,
+    0 0 0 red, 0 0 44px red, 0 0 75px red;
+}
+
 .signup__question {
-  margin-top: 8%;
+  margin-top: 6%;
 }
 
 .signup__link {
-  color: #7F00FF;
+  color: #7f00ff;
 }
 
 .signup__link:hover {
@@ -134,7 +140,7 @@
 }
 
 .yellow,
-.pink {
+.purple {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -152,7 +158,7 @@
   content: '';
   height: 200%;
   width: 140%;
-  background: linear-gradient(#FDDA0D 20%, #7F00FF  80%);
+  background: linear-gradient(#fdda0d 20%, #7f00ff 80%);
   animation: glowing 6s infinite linear;
 }
 
@@ -179,8 +185,8 @@
   55%,
   68%,
   100% {
-    text-shadow: 0 0 2px #fff, 0 0 10px #fff, 0 0 20px #FDDA0D, 0 0 40px #FDDA0D,
-    0 0 0 #FDDA0D, 0 0 44px #FDDA0D, 0 0 75px #eac806;
+    text-shadow: 0 0 2px #fff, 0 0 10px #fff, 0 0 20px #fdda0d, 0 0 40px #fdda0d,
+      0 0 0 #fdda0d, 0 0 44px #fdda0d, 0 0 75px #eac806;
   }
 
   50%,
@@ -195,8 +201,8 @@
   55%,
   68%,
   100% {
-    text-shadow: 0 0 2px #fff, 0 0 10px #fff, 0 0 20px #7F00FF, 0 0 40px #7F00FF,
-    0 0 0 #7F00FF, 0 0 44px #7F00FF, 0 0 75px #6800d0;
+    text-shadow: 0 0 2px #fff, 0 0 10px #fff, 0 0 20px #7f00ff, 0 0 40px #7f00ff,
+      0 0 0 #7f00ff, 0 0 44px #7f00ff, 0 0 75px #6800d0;
   }
 
   50%,

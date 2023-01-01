@@ -18,6 +18,12 @@ export default function Signup() {
     }
   }, [])
 
+  useEffect(() => {
+    if (error) {
+      setError('')
+    }
+  }, [username, password])
+
   const handleSignupSubmit = async (e: SyntheticEvent) => {
     e.preventDefault()
     try {
@@ -78,10 +84,10 @@ export default function Signup() {
               required
             />
           </div>
-          <button className='signup_btn'>Sign up</button>
+          {error ? <p className='signup__error'>{error}</p> : null}
+          <button className='signup_btn'>Submit</button>
           {isLoading ? <p>Loading...</p> : null}
-          {error ? <p>{error}</p> : null}
-          <p className='login__question'>
+          <p className='signup__question'>
             Already have an account?
             <Link to={APP_ROUTES.LOGIN} className='signup__link'>
               {' '}
