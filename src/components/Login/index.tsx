@@ -93,7 +93,7 @@ export default function Login() {
           </div>
           {error ? <p className='login__error'>{error}</p> : null}
           <button className='login_btn'>Submit</button>
-          {isLoading ? <p>Loading...</p> : null}
+          {isLoading ? <p className='loading'>Loading...</p> : null}
           <p className='login__question'>
             Don't have an account?
             <Link to={APP_ROUTES.SIGN_UP} className='login__link'>
