@@ -1,3 +1,8 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 .signup__background {
   display: flex;
   flex-direction: column;
@@ -5,39 +10,55 @@
   justify-content: center;
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(45deg, cyan, 25%, hotpink 50%, yellow 100%);
+  animation: fade-in 3s forwards;
+  font-family: 'Space Mono';
+  line-height: 2.5;
 }
 
 .signup__form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative;
+  position: absolute;
   text-align: center;
-  width: 30vw;
-  min-height: 400px;
-  height: 45vh;
-  padding: 40px;
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-  border-right: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(5px);
+  z-index: 1000;
+}
+
+.signup__left-title,
+.signup__right-title {
+  font-family: 'neon';
+  font-size: 5.3rem;
+  z-index: 9999;
+  position: absolute;
+  text-align: center;
+  color: white;
+  letter-spacing: 20px;
+}
+
+.signup__left-title {
+  top: 2%;
+  left: 1%;
+  text-shadow: 0 0 2px #fff, 0 0 10px #fff, 0 0 20px #fdda0d, 0 0 40px #fdda0d,
+    0 0 0 #fdda0d, 0 0 44px #fdda0d, 0 0 75px #eac806;
+  animation: signup__left-neon 6s infinite;
+  animation-delay: 2s;
+}
+
+.signup__right-title {
+  bottom: 0%;
+  right: 1%;
+  text-shadow: 0 0 2px #fff, 0 0 10px #fff, 0 0 20px #7f00ff, 0 0 40px #7f00ff,
+    0 0 0 #7f00ff, 0 0 44px #7f00ff, 0 0 75px #6800d0;
+  animation: signup__right-neon 6s infinite;
+  animation-delay: 4s;
 }
 
 .signup__form h1 {
   position: relative;
-  color: yellow;
   font-size: 2.5rem;
   text-transform: uppercase;
   letter-spacing: 1px;
-  /* margin-bottom: 3%; */
-}
-
-.signup__form h1:hover {
-color: red;
+  margin-bottom: 4%;
 }
 
 .signup__form h1::before {
@@ -46,7 +67,7 @@ color: red;
   bottom: -10px;
   width: 50%;
   height: 10%;
-  background: white;
+  background: #fdda0d;
 }
 
 .headers__container {
@@ -57,7 +78,8 @@ color: red;
 
 .input__container {
   width: 60%;
-  margin-top:4%;
+  margin-top: 4%;
+  margin-right: 9%;
 }
 
 .signup__form input {
@@ -71,6 +93,8 @@ color: red;
   border-radius: 35px;
   letter-spacing: 1px;
   font-size: 1rem;
+  font-family: 'Space Mono';
+  margin-top: 4%;
 }
 
 .signup__form input::placeholder {
@@ -78,8 +102,118 @@ color: red;
 }
 
 .signup_btn {
-margin-top: 4%;
-letter-spacing: 5px;
-text-transform: uppercase;
+  margin-top: 5%;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+}
 
+.signup__error {
+  font-size: 15px;
+  margin-top: 3%;
+  text-shadow: 0 0 2px #fff, 0 0 10px #fff, 0 0 20px red, 0 0 40px red,
+    0 0 0 red, 0 0 44px red, 0 0 75px red;
+}
+
+.signup__question {
+  margin-top: 6%;
+}
+
+.signup__link {
+  color: #7f00ff;
+}
+
+.signup__link:hover {
+  color: rgb(237, 147, 255);
+  text-shadow: 0 0 0.5vw #082180, 0 0 1.5vw #082180, 0 0 5vw #082180,
+    0 0 5vw #082180, 0 0 0.2vw #082180, 0.5vw 0.5vw 0.1vw #0a3940;
+}
+
+.signup__loading {
+  margin-top: 5%;
+  font-size: 15px;
+  text-shadow: 0 0 2px #fff, 0 0 10px #fff, 0 0 20px rgb(0, 255, 0), 0 0 40px rgb(0, 255, 0),
+    0 0 0 rgb(0, 255, 0), 0 0 44px rgb(0, 255, 0), 0 0 75px rgb(0, 129, 0);
+}
+
+/* blue is CUBE, purple is BLUR */
+.yellow {
+  position: relative;
+}
+
+.purple {
+  position: absolute;
+  z-index: -500;
+  filter: blur(10px);
+}
+
+.yellow,
+.purple {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40vw;
+  max-width: 50vw;
+  height: 50vh;
+  /* max-height: 50vh; */
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.yellow::before,
+.purple::before {
+  position: absolute;
+  content: '';
+  height: 200%;
+  width: 140%;
+  background: linear-gradient(#fdda0d 20%, #7f00ff 80%);
+  animation: glowing 6s infinite linear;
+}
+
+.yellow::after {
+  position: absolute;
+  background: #000;
+  content: '';
+  border-radius: 18px;
+  inset: 4px;
+}
+
+/* @keyframes glowing {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+} */
+
+@keyframes signup__left-neon {
+  0%,
+  45%,
+  55%,
+  68%,
+  100% {
+    text-shadow: 0 0 2px #fff, 0 0 10px #fff, 0 0 20px #fdda0d, 0 0 40px #fdda0d,
+      0 0 0 #fdda0d, 0 0 44px #fdda0d, 0 0 75px #eac806;
+  }
+
+  50%,
+  60% {
+    text-shadow: none;
+  }
+}
+
+@keyframes signup__right-neon {
+  0%,
+  45%,
+  55%,
+  68%,
+  100% {
+    text-shadow: 0 0 2px #fff, 0 0 10px #fff, 0 0 20px #7f00ff, 0 0 40px #7f00ff,
+      0 0 0 #7f00ff, 0 0 44px #7f00ff, 0 0 75px #6800d0;
+  }
+
+  50%,
+  60% {
+    text-shadow: none;
+  }
 }

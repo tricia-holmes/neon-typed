@@ -21,6 +21,19 @@ export default function Login() {
     }
   }, [])
 
+  useEffect(() => {
+    const token = getTokenFromLocalStorage()
+    if (token) {
+      navigate(APP_ROUTES.GAME)
+    }
+  }, [])
+
+  useEffect(() => {
+    if (error) {
+      setError('')
+    }
+  }, [username, password])
+
   const handleLoginSubmit = async (e: SyntheticEvent) => {
     e.preventDefault()
     try {
@@ -54,7 +67,7 @@ export default function Login() {
       <div className='blue'>
         <form className='login__form' onSubmit={(e) => handleLoginSubmit(e)}>
           <div className='headers__container'>
-            <h1 style={{letterSpacing: '5px'}}>Login</h1>
+            <h1 style={{ letterSpacing: '5px' }}>Login</h1>
           </div>
           <div className='input__container'>
             <input
@@ -78,18 +91,25 @@ export default function Login() {
               required
             />
           </div>
-          <button className='login_btn'>Login</button>
-          {isLoading ? <p>Loading...</p> : null}
-          {error ? <p>{error}</p> : null}
+          {error ? <p className='login__error'>{error}</p> : null}
+          <button className='login_btn'>Submit</button>
+          {isLoading ? <p className='login__loading'>Loading...</p> : null}
           <p className='login__question'>
             Don't have an account?
-            <Link to={APP_ROUTES.SIGN_UP}> Sign up here!</Link>
+            <Link to={APP_ROUTES.SIGN_UP} className='login__link'>
+              {' '}
+              Sign up here!
+            </Link>
           </p>
         </form>
       </div>
       <div className='pink'></div>
-      <h1 className='left-title'>Neon Typed</h1>
-      <h1 className='right-title'>Neon Typed</h1> 
-   </div>
+      <h1 className='left-title'>
+        <Link to='/'>Neon Typed</Link>
+      </h1>
+      <h1 className='right-title'>
+        <Link to='/'>Neon Typed</Link>
+      </h1>
+    </div>
   )
 }
