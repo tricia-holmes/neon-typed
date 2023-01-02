@@ -1,3 +1,4 @@
+import '../../../node_modules/augmented-ui/augmented-ui.min.css'
 import { useState, KeyboardEvent, ChangeEvent, useEffect, useRef } from 'react'
 import './Input.css'
 
@@ -36,16 +37,18 @@ export default function Input({
   }
 
   return (
-    <input
-      type='text'
-      name='text'
-      ref={inputRef}
-      className='game__input'
-      onChange={handleChange}
-      onKeyDown={handleInput}
-      value={inputText}
-      disabled={hasResults}
-      autoComplete='off'
-    />
+    <div className='input__border'>
+      <input
+        type='text'
+        name='text'
+        ref={inputRef}
+        className='game__input'
+        onChange={handleChange}
+        onKeyDown={handleInput}
+        value={inputText}
+        disabled={hasResults}
+        autoComplete='off'
+      />
+    </div>
   )
 }
