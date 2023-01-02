@@ -37,7 +37,7 @@
   display: grid;
   z-index: 2;
   pointer-events: none;
-  filter: var(--glow) brightness(1.5) drop-shadow(0 0 10px violet);
+  filter: var(--glow) brightness(1.5) drop-shadow(0 0 10px hotpink);
 }
 
 .augs {
@@ -70,7 +70,7 @@
 .glow__container .augs {
   --aug-border: initial;
   --aug-border-all: 2px;
-  --aug-border-bg: linear-gradient(to bottom left, rebeccapurple, orange);
+  --aug-border-bg: linear-gradient(to bottom left, #5d00ff, rgba(0, 252, 101, 0.945), yellow, red, #ff006a);
 }
 
 section.augs {
@@ -105,7 +105,7 @@ section.augs {
     rgba(255, 255, 255, 0.03) 0px 2px,
     transparent 2px 4px
   ),
-  linear-gradient(to bottom, #200933 75%, #3d0b43);
+  linear-gradient(to bottom, #6f03f417 75%, rgba(238, 130, 238, 0.193));
 }
 
 .words {
@@ -121,3 +121,4 @@ section.augs {
   text-shadow: 0 0 2px #001716, 0 0 5px #03edf933,
     0 0 10px #ffff6633 0 0 2px #fc199a;
 }
+
