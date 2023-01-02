@@ -10,9 +10,9 @@ const onClick = () => {
 }
 
   return (
-    <div className='btn__container'>
+    <>
       <button onClick={onClick} >Leaderboard</button>
       {open && <Leaderboard onClick={onClick}/>}
-    </div>
+    </>
   )
 }

@@ -119,16 +119,29 @@ export default function Game() {
   return (
     <div className='game'>
       {showProfile && <Profile setShowProfile={setShowProfile} />}
-      <button onClick={logout}>Logout</button>
-      <button onClick={() => setShowProfile(true)}>Profile</button>
-      <Button />
-      <h1 className='game__countdown'>Countdown: <span className='game__time'>{timeRemaining}</span></h1>
-      <Prompt words={promptWords} currentIndex={currentIndex} />
-      <Input
-        checkWord={checkWord}
-        hasResults={hasResults}
-        handleCountdown={handleCountdown}
-      />
+      <nav className='game__nav'>
+        <h4 className='game__logo'>Neon Typed</h4>
+        <div>
+          <button className='nav__btn' onClick={() => setShowProfile(true)}>
+            Profile
+          </button>
+          <Button />
+          <button className='nav__btn' onClick={logout}>
+            Logout
+          </button>
+        </div>
+      </nav>
+      <div className='game__container'>
+        <h1 className='game__countdown'>
+          Countdown: <span className='game__time'>{timeRemaining}</span>
+        </h1>
+        <Prompt words={promptWords} currentIndex={currentIndex} />
+        <Input
+          checkWord={checkWord}
+          hasResults={hasResults}
+          handleCountdown={handleCountdown}
+        />
+      </div>
       {hasResults && <Modal promptWords={promptWords} reset={reset} />}
     </div>
   )
