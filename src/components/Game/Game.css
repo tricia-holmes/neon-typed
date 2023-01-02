@@ -14,6 +14,7 @@
 color: #05d9e3;
   text-shadow: 0 0 2px #393a33, 0 0 35px #ffffff44, 0 0 10px #05d9e3, 0 0 2px #05d9e3;
   font-family: Orbitron;
+  /* font-size: 3.5rem; */
 }
 
 .game__time {
@@ -21,46 +22,4 @@ color: #05d9e3;
   text-shadow: 0 0 2px #393a33, 0 0 35px #ffffff44, 0 0 10px #05d9e3, 0 0 2px #05d9e3;
 }
 
-.game__nav {
-  display: flex;
-  position: fixed;
-  align-items: center;
-  justify-content: space-evenly;
-  top: 2vh;
-  width: 100vw;
-  /* height: 14vh; */
-  justify-content: space-between;
-  align-items: center;
-  color: #e3d7c7;
-  z-index: 100;
-}
 
-.game__logo {
-  font-size: 2.5rem;
-  font-family: 'Neon';
-  margin-left: 20px;
-}
-
-.nav__btn {
-  cursor: pointer;
-  /* height: 56px;
-  width: 251px; */
-  margin-right: 20px;
-  border: none;
-  font-family: 'Space Mono';
-  font-size: .9rem;
-  bottom: 0;
-  background-color: transparent;
-  color: beige;
-  z-index: 100;
-  text-transform: uppercase;
-}
-
-.nav__btn:hover {
-  background-color: #efc0ba;
-  color: #161616;
-}
-
-.nav__btn:active {
-  transform: scale(0.98);
-}

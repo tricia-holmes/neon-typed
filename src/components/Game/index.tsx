@@ -3,11 +3,10 @@ import { getTokenFromLocalStorage } from '../../utilis/common'
 import { API_ROUTES, APP_ROUTES } from '../../utilis/constants'
 import { useNavigate } from 'react-router-dom'
 import './Game.css'
-import Button from '../Button'
+import Nav from '../Nav'
 import Prompt from '../Prompt'
 import Input from '../Input'
 import Modal from '../Modal'
-import Profile from '../Profile'
 
 type PromptWords = {
   word: string
@@ -17,13 +16,11 @@ type PromptWords = {
 export default function Game() {
   const navigate = useNavigate()
   const STARTING__TIME = 30
-  const [isLoggedOut, setisLoggedOut] = useState(false)
   const [timeRemaining, setTimeRemaining] = useState(STARTING__TIME)
   const [isTimeRunning, setIsTimeRunning] = useState(false)
   const [currentIndex, setCurrentIndex] = useState(0)
   const [promptWords, setPromptWords] = useState<PromptWords[]>([])
   const [hasResults, setHasResults] = useState(false)
-  const [showProfile, setShowProfile] = useState(false)
 
   const fetchData = useCallback(async () => {
     const token = getTokenFromLocalStorage()
@@ -48,11 +45,6 @@ export default function Game() {
     setPromptWords(wordObjs)
   }, [])
 
-  useEffect(() => {
-    if (isLoggedOut) {
-      navigate(APP_ROUTES.LOGIN)
-    }
-  }, [isLoggedOut])
 
   useEffect(() => {
     fetchData().catch(console.error) //need to add error handling
@@ -111,26 +103,11 @@ export default function Game() {
     setHasResults(false)
   }
 
-  const logout = () => {
-    localStorage.removeItem('token')
-    setisLoggedOut(true)
-  }
+  
 
   return (
     <div className='game'>
-      {showProfile && <Profile setShowProfile={setShowProfile} />}
-      <nav className='game__nav'>
-        <h4 className='game__logo'>Neon Typed</h4>
-        <div>
-          <button className='nav__btn' onClick={() => setShowProfile(true)}>
-            Profile
-          </button>
-          <Button />
-          <button className='nav__btn' onClick={logout}>
-            Logout
-          </button>
-        </div>
-      </nav>
+      <Nav />
       <div className='game__container'>
         <h1 className='game__countdown'>
           Countdown: <span className='game__time'>{timeRemaining}</span>
