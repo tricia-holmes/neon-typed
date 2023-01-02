@@ -45,6 +45,12 @@ a {
   font-weight: 400;
 }
 
+@font-face {
+  font-family: Orbitron;
+  src: url(./assets/fonts/Orbitron-Medium.ttf);
+  font-weight: 500;
+}
+
 body {
   margin: 0;
   display: flex;

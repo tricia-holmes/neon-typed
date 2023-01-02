@@ -122,7 +122,7 @@ export default function Game() {
       <button onClick={logout}>Logout</button>
       <button onClick={() => setShowProfile(true)}>Profile</button>
       <Button />
-      <h1>Countdown: {timeRemaining}</h1>
+      <h1 className='game__countdown'>Countdown: <span className='game__time'>{timeRemaining}</span></h1>
       <Prompt words={promptWords} currentIndex={currentIndex} />
       <Input
         checkWord={checkWord}

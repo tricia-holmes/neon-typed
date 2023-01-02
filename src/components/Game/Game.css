@@ -3,3 +3,14 @@
   flex-direction: column;
   align-items: center;
 }
+
+.game__countdown {
+color: #05d9e3;
+  text-shadow: 0 0 2px #393a33, 0 0 35px #ffffff44, 0 0 10px #05d9e3, 0 0 2px #05d9e3;
+  font-family: Orbitron;
+}
+
+.game__time {
+  color: #05d9e3;
+  text-shadow: 0 0 2px #393a33, 0 0 35px #ffffff44, 0 0 10px #05d9e3, 0 0 2px #05d9e3;
+}
