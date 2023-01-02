@@ -7,6 +7,7 @@
   background-color: rgba(0, 0, 0, 0.75);
   font-family: Press2Play;
   text-transform: uppercase;
+  z-index: 9999;
 }
 
 .leaderboard__background {

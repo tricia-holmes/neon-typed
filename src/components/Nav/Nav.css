@@ -1,0 +1,86 @@
+.game__nav {
+  display: flex;
+  position: fixed;
+  align-items: center;
+  justify-content: space-evenly;
+  top: 2vh;
+  width: 100vw;
+  justify-content: space-between;
+  align-items: center;
+  color: #e3d7c7;
+  z-index: 9999;
+}
+
+.game__logo {
+  font-size: 0.3rem;
+  font-family: 'Space Mono';
+  margin-left: 10px;
+  margin-bottom: 30px;
+  writing-mode: vertical-rl;
+  transform: scale(1, 1);
+}
+
+.logo__container {
+  position: relative;
+  top: 35vh;
+}
+
+.links__container {
+  /* display: flex;
+  flex-direction: column; */
+  position: relative;
+  bottom: 21vh;
+}
+
+.nav__btn {
+  cursor: pointer;
+  margin-right: 20px;
+  border: none;
+  font-family: 'Space Mono';
+  font-size: 0.9rem;
+  bottom: 0;
+  background-color: transparent;
+  color: #03e9f4;
+  z-index: 100;
+  text-transform: uppercase;
+}
+
+.green {
+  filter: hue-rotate(300deg);
+}
+
+.green:hover {
+  filter: hue-rotate(-80deg);
+  box-shadow: 0 0 5px #3a86ff, 0 0 25px #3a86ff, 0 0 50px #3a86ff,
+    0 0 1500px #3a86ff;
+  background: #3a86ff;
+  color: #fff;
+}
+
+.blush {
+  filter: hue-rotate(120deg);
+}
+
+.blush:hover {
+  filter: hue-rotate(100deg);
+  box-shadow: 0 0 5px #3a86ff, 0 0 25px #3a86ff, 0 0 50px #3a86ff,
+    0 0 1500px #3a86ff;
+  background: #3a86ff;
+  color: #fff;
+}
+
+.cyan {
+  color: #03e9f4;
+}
+
+.cyan:hover {
+  filter: hue-rotate(-30deg);
+  box-shadow: 0 0 5px #3a86ff, 0 0 25px #3a86ff, 0 0 50px #3a86ff,
+    0 0 1500px #3a86ff;
+  background: #3a86ff;
+  color: #fff;
+}
+
+.nav__btn:active {
+  transform: scale(0.98);
+}

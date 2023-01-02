@@ -5,7 +5,7 @@ import {
   Navigate,
 } from 'react-router-dom'
 import './App.css'
-import Game from './components/Game/Game'
+import Game from './components/Game'
 import Login from './components/Login'
 import Signup from './components/Signup'
 import Welcome from './components/Welcome'

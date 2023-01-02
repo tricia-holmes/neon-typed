@@ -2,11 +2,11 @@ import { useState, useCallback, useEffect } from 'react'
 import { getTokenFromLocalStorage } from '../../utilis/common'
 import { API_ROUTES, APP_ROUTES } from '../../utilis/constants'
 import { useNavigate } from 'react-router-dom'
-import Button from '../Button'
+import './Game.css'
+import Nav from '../Nav'
 import Prompt from '../Prompt'
 import Input from '../Input'
 import Modal from '../Modal'
-import Profile from '../Profile'
 
 type PromptWords = {
   word: string
@@ -15,14 +15,12 @@ type PromptWords = {
 
 export default function Game() {
   const navigate = useNavigate()
-  const STARTING__TIME = 10
-  const [isLoggedOut, setisLoggedOut] = useState(false)
+  const STARTING__TIME = 30
   const [timeRemaining, setTimeRemaining] = useState(STARTING__TIME)
   const [isTimeRunning, setIsTimeRunning] = useState(false)
   const [currentIndex, setCurrentIndex] = useState(0)
   const [promptWords, setPromptWords] = useState<PromptWords[]>([])
   const [hasResults, setHasResults] = useState(false)
-  const [showProfile, setShowProfile] = useState(false)
 
   const fetchData = useCallback(async () => {
     const token = getTokenFromLocalStorage()
@@ -47,11 +45,6 @@ export default function Game() {
     setPromptWords(wordObjs)
   }, [])
 
-  useEffect(() => {
-    if (isLoggedOut) {
-      navigate(APP_ROUTES.LOGIN)
-    }
-  }, [isLoggedOut])
 
   useEffect(() => {
     fetchData().catch(console.error) //need to add error handling
@@ -110,24 +103,22 @@ export default function Game() {
     setHasResults(false)
   }
 
-  const logout = () => {
-    localStorage.removeItem('token')
-    setisLoggedOut(true)
-  }
+  
 
   return (
-    <div>
-      {showProfile && <Profile setShowProfile={setShowProfile} />}
-      <button onClick={logout}>Logout</button>
-      <button onClick={() => setShowProfile(true)}>Profile</button>
-      <Button />
-      <h1>Countdown: {timeRemaining}</h1>
-      <Prompt words={promptWords} currentIndex={currentIndex} />
-      <Input
-        checkWord={checkWord}
-        hasResults={hasResults}
-        handleCountdown={handleCountdown}
-      />
+    <div className='game'>
+      <Nav />
+      <div className='game__container'>
+        <h1 className='game__countdown'>
+          Countdown: <span className='game__time'>{timeRemaining}</span>
+        </h1>
+        <Prompt words={promptWords} currentIndex={currentIndex} />
+        <Input
+          checkWord={checkWord}
+          hasResults={hasResults}
+          handleCountdown={handleCountdown}
+        />
+      </div>
       {hasResults && <Modal promptWords={promptWords} reset={reset} />}
     </div>
   )

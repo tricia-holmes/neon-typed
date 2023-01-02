@@ -1,5 +1,17 @@
+.input__border {
+  filter: drop-shadow(0 0 4px rgba(0, 255, 255, 0.687));
+  position: relative;
+  bottom: 10vh; 
+}
+
 .game__input {
-  height: 5vh;
-  width: 20vw;
-  font-size: 20px;
+  border: 2px solid rgba(0, 255, 255, 0.712);
+  line-height: 2;
+  border-radius: 4px;
+  font-size: 1.5rem;
+  color: cyan;
+  text-shadow: 0 0 2px #393a33, 0 0 35px #ffffff44, 0 0 10px cyan, 0 0 2px cyan;
+  background-color: #000;
+  font-family: 'Space Mono';
+  font-size: 1.5rem;
 }

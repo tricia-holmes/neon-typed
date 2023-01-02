@@ -22,13 +22,6 @@ export default function Login() {
   }, [])
 
   useEffect(() => {
-    const token = getTokenFromLocalStorage()
-    if (token) {
-      navigate(APP_ROUTES.GAME)
-    }
-  }, [])
-
-  useEffect(() => {
     if (error) {
       setError('')
     }

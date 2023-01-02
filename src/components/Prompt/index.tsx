@@ -1,6 +1,7 @@
+import '../../../node_modules/augmented-ui/augmented-ui.min.css'
 import './Prompt.css'
 import Word from '../Word'
-import { useEffect } from 'react';
+import { useEffect } from 'react'
 
 type PromptProps = {
   words: Array<{ word: string; isCorrect: null | boolean }>
@@ -23,8 +24,16 @@ export default function Prompt({ words, currentIndex }: PromptProps) {
   }, [currentIndex])
 
   return (
-  <div className='prompt__container'>
-  <div className='game__prompt'>{newWords}</div>
-  </div>
+    <div className='prompt__container'>
+      <div className='glow__container'>
+        <div className='augs' data-augmented-ui></div>
+      </div>
+      <section className='augs background' data-augmented-ui>
+        <div className='dots'></div>
+        <div className='words__container'>
+          <div className='words'>{newWords}</div>
+        </div>
+      </section>
+    </div>
   )
 }

@@ -2,18 +2,26 @@
   display: inline-block;
   margin-inline: 8px;
   font-size: 35px;
+  opacity: .75;
 }
 
 .correct {
-  color: lime
+  color: lime;
+  text-shadow: 0 0 2px #393a33, 0 0 35px #ffffff44, 0 0 10px lime, 0 0 2px lime;
+  filter: brightness(.70);
+  opacity: 1;
 }
 
 .incorrect {
-  color: red
+  color: red;
+  text-shadow: 0 0 2px #393a33, 0 0 35px #ffffff44, 0 0 10px red, 0 0 2px red;
+  text-decoration: line-through;
+  filter: brightness(.65);
+  opacity: 1;
 }
 
 .highlighted {
-  border-radius: 25px;
-  background-color: darkgrey;
-  
+  color: yellow;
+  text-shadow: 0 0 2px #393a33, 0 0 35px #ffffff44, 0 0 10px yellow, 0 0 2px yellow;
+  opacity: 1;
 }
