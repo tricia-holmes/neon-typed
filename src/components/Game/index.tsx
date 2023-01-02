@@ -2,6 +2,7 @@ import { useState, useCallback, useEffect } from 'react'
 import { getTokenFromLocalStorage } from '../../utilis/common'
 import { API_ROUTES, APP_ROUTES } from '../../utilis/constants'
 import { useNavigate } from 'react-router-dom'
+import './Game.css'
 import Button from '../Button'
 import Prompt from '../Prompt'
 import Input from '../Input'
@@ -15,7 +16,7 @@ type PromptWords = {
 
 export default function Game() {
   const navigate = useNavigate()
-  const STARTING__TIME = 10
+  const STARTING__TIME = 30
   const [isLoggedOut, setisLoggedOut] = useState(false)
   const [timeRemaining, setTimeRemaining] = useState(STARTING__TIME)
   const [isTimeRunning, setIsTimeRunning] = useState(false)
@@ -116,7 +117,7 @@ export default function Game() {
   }
 
   return (
-    <div>
+    <div className='game'>
       {showProfile && <Profile setShowProfile={setShowProfile} />}
       <button onClick={logout}>Logout</button>
       <button onClick={() => setShowProfile(true)}>Profile</button>
