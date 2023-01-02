@@ -1,4 +1,4 @@
-import { useState, SyntheticEvent, useEffect } from 'react'
+import { useState, SyntheticEvent, useEffect, useRef } from 'react'
 import './Signup.css'
 import { API_ROUTES, APP_ROUTES } from '../../utilis/constants'
 import { Link, useNavigate } from 'react-router-dom'
@@ -6,6 +6,7 @@ import { getTokenFromLocalStorage } from '../../utilis/common'
 
 export default function Signup() {
   const navigate = useNavigate()
+  const signupRef = useRef<HTMLInputElement>(null)
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [isLoading, setIsLoading] = useState(false)
@@ -15,6 +16,10 @@ export default function Signup() {
     const token = getTokenFromLocalStorage()
     if (token) {
       navigate(APP_ROUTES.GAME)
+    }
+
+    if (signupRef.current) {
+      signupRef.current.focus()
     }
   }, [])
 
@@ -71,6 +76,7 @@ export default function Signup() {
               value={username}
               autoComplete='off'
               required
+              ref={signupRef}
             />
           </div>
           <div className='input__container'>
