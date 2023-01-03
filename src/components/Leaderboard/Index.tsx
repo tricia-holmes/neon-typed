@@ -9,12 +9,6 @@ type LeaderboardProps = {
   onClick: () => void
 }
 
-type Highscores = {
-  username: string
-  wpm: number
-  createdAt: string
-}
-
 export default function Leaderboard({ onClick }: LeaderboardProps) {
   const navigate = useNavigate()
   const [scores, setScores] = useState([])
@@ -46,7 +40,6 @@ export default function Leaderboard({ onClick }: LeaderboardProps) {
     })
 
     setScores(newScores)
-    console.log(newScores)
   }, [])
 
   useEffect(() => {
@@ -55,21 +48,24 @@ export default function Leaderboard({ onClick }: LeaderboardProps) {
 
   return (
     <div className='leaderboard__modal'>
-      <div className='leaderboard__background'>
-        <div className='leaderboard__text'>LEADERBOARD</div>
+      <div className='leaderboard__container leaderboard__bg'>
+        <div className='leaderboard__headers'>
+          <div className='leaderboard__text'>LEADERBOARD</div>
+          <button className='leaderboard__btn' onClick={onClick}>
+            X
+          </button>
+        </div>
         <table>
           <tbody>
             <tr>
               <th>RANK</th>
-              <th>SCORE</th>
+              <th>WPM</th>
               <th>NAME</th>
             </tr>
             {scores}
           </tbody>
         </table>
-        <button className='leaderboard__btn' onClick={onClick}>
-          Close
-        </button>
+        <div className='leaderboard__blur'></div>
       </div>
     </div>
   )
