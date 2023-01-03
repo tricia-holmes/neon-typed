@@ -35,7 +35,7 @@
 }
 
 .leaderboard__text {
-  margin-left: 12%;
+  margin-left: 10%;
   font-size: 2rem;
   letter-spacing: 5px;
   text-shadow: 0 0 2px #fff, 0 0 10px #fff, 0 0 20px #ff0080, 0 0 40px #ff0080,
@@ -46,17 +46,17 @@
 }
 .leaderboard__btn {
   position: relative;
-  bottom: 2vh;
-  left: 14vh;
-  font-size: 1.4rem;
+  bottom: 1vh;
+  left: 12vh;
+  font-size: 1.2rem;
   background-color: transparent;
   z-index: 9999;
 }
 
 .leaderboard__btn:hover {
   filter: hue-rotate(100deg);
-  box-shadow: 0 0 5px #3a86ff, 0 0 25px #3a86ff, 0 0 50px #3a86ff,
-    0 0 1500px #3a86ff;
+    box-shadow: 0 0 5px #3a86ff, 0 0 25px #3a86ff, 0 0 50px #3a86ff,
+      0 0 1500px #3a86ff;
   background: #3a86ff;
   color: #fff;
 }
