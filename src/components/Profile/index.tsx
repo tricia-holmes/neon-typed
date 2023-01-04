@@ -50,22 +50,27 @@ export default function Profile({ setShowProfile }: ProfilePromots) {
 
   return (
     <div className='profile__modal'>
-      <div className='profile__background'>
-        <h1 className='profile__text'>Profile</h1>
-        <p style={{ fontSize: '.9rem' }} className='profile__text'>
-          {user}
-        </p>
-        <table>
-          <tbody>
-            <tr>
-              <th>WPM</th>
-              <th>ACCURACY</th>
-              <th>TIMESTAMP</th>
-            </tr>
-            {history}
-          </tbody>
-        </table>
-        <button onClick={() => setShowProfile(false)}>Close</button>
+      <div className='profile__container'>
+        <button onClick={() => setShowProfile(false)}>Back</button>
+        <div className='profile__user'>
+            <h1 className='profile__text'>Profile:</h1>
+          <h1 className='profile__name'>
+            {user}
+          </h1>
+        </div>
+        <div className='history__container'>
+        <h2 className='history__title'>History</h2>
+          <table>
+            <tbody>
+              <tr>
+                <th>WPM</th>
+                <th>ACCURACY</th>
+                <th>TIMESTAMP</th>
+              </tr>
+              {history}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   )
