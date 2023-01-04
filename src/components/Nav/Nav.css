@@ -26,8 +26,6 @@
 }
 
 .links__container {
-  /* display: flex;
-  flex-direction: column; */
   position: relative;
   bottom: 21vh;
 }

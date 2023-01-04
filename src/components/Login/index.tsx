@@ -1,4 +1,4 @@
-import { useState, SyntheticEvent, useEffect } from 'react'
+import { useState, SyntheticEvent, useEffect, useRef } from 'react'
 import './Login.css'
 import { API_ROUTES, APP_ROUTES } from '../../utilis/constants'
 import { Link, useNavigate } from 'react-router-dom'
@@ -9,6 +9,7 @@ import {
 
 export default function Login() {
   const navigate = useNavigate()
+  const loginRef = useRef<HTMLInputElement>(null)
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [isLoading, setIsLoading] = useState(false)
@@ -18,6 +19,10 @@ export default function Login() {
     const token = getTokenFromLocalStorage()
     if (token) {
       navigate(APP_ROUTES.GAME)
+    }
+
+    if (loginRef.current) {
+      loginRef.current.focus()
     }
   }, [])
 
@@ -71,6 +76,7 @@ export default function Login() {
               value={username}
               autoComplete='off'
               required
+              ref={loginRef}
             />
           </div>
           <div className='input__container'>
