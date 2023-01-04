@@ -19,25 +19,10 @@ table {
   text-align: center;
 }
 
-table th {
-  font-size: 1.6rem;
-    padding-bottom: 2.5%;
-  color: rgb(244, 224, 124);
-  text-shadow: 0 0 2px #393a33, 0 0 35px #ffffff44,
-    0 0 10px rgba(244, 224, 124, 0.881), 0 0 2px rgba(244, 224, 124, 0.881);
-}
-
 table td {
-  text-decoration: double;
   padding-top: 1.5%;
   line-height: 1.2;
 }
 
-table tr:nth-child(2) {
-  color: #03e9f4;
-  filter: hue-rotate(-400deg);
-  text-shadow: 0 0 2px #393a33, 0 0 35px #ffffff44, 0 0 10px #03e9f4,
-    0 0 2px #03e9f4;
-  margin-bottom: 15px;
-}
+
 
