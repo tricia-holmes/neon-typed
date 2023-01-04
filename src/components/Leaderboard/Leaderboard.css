@@ -20,6 +20,7 @@
   left: 50%;
   border-radius: 3px;
   transform: translate(-50%, -50%);
+  overflow: scroll;
 }
 
 .leaderboard__headers {
@@ -36,7 +37,7 @@
 
 .leaderboard__text {
   margin-left: 10%;
-  font-size: 2rem;
+  font-size: 2.2rem;
   letter-spacing: 5px;
   text-shadow: 0 0 2px #fff, 0 0 10px #fff, 0 0 20px #ff0080, 0 0 40px #ff0080,
     0 0 0 #ff0080, 0 0 44px #ff0080, 0 0 75px #ff0090;
@@ -46,8 +47,8 @@
 }
 .leaderboard__btn {
   position: relative;
-  bottom: 1vh;
-  left: 12vh;
+  bottom: 2vh;
+  left: 18vh;
   font-size: 1.2rem;
   background-color: transparent;
   z-index: 9999;
@@ -63,7 +64,6 @@
 
 .leaderboard__bg {
   position: relative;
-  overflow: scroll;
 }
 
 .leaderboard__blur {
@@ -77,9 +77,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 50vw;
+  width: 60vw;
 
-  height: 70vh;
+  height: 90vh;
   border-radius: 20px;
   overflow: hidden;
 }
@@ -100,6 +100,30 @@
   content: '';
   border-radius: 18px;
   inset: 4px;
+}
+
+.leaderboard__modal table th {
+  font-size: 1.7rem;
+    padding-bottom: 1.8%;
+  color: rgb(244, 224, 124);
+  text-shadow: 0 0 2px #393a33, 0 0 35px #ffffff44,
+    0 0 10px rgba(244, 224, 124, 0.881), 0 0 2px rgba(244, 224, 124, 0.881);
+}
+
+.leaderboard__modal table tr:nth-child(2) {
+  color: #03e9f4;
+  filter: hue-rotate(-400deg);
+  text-shadow: 0 0 2px #393a33, 0 0 35px #ffffff44, 0 0 10px #03e9f4,
+    0 0 2px #03e9f4;
+  margin-bottom: 15px;
+}
+
+.leaderboard__modal table td {
+  padding-top: 2.9%;
+}
+
+.leaderboard__modal table {
+  width: 85%;
 }
 
 @keyframes glowing {

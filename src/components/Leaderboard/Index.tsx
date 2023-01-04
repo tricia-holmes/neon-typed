@@ -29,12 +29,21 @@ export default function Leaderboard({ onClick }: LeaderboardProps) {
     const data = await response.json()
 
     const newScores = data.map((score: any, index: number) => {
+      const date = new Date(score.createdAt)
+      const timestamp = `${date.toLocaleDateString(
+        'en-US'
+      )} ${date.toLocaleTimeString('en-US', {
+        hour: '2-digit',
+        minute: '2-digit',
+      })}`
+
       return (
         <Score
           key={`score ${index}`}
           index={index + 1}
           wpm={score.wpm}
           username={score.username}
+          timestamp={timestamp}
         />
       )
     })
@@ -61,6 +70,7 @@ export default function Leaderboard({ onClick }: LeaderboardProps) {
               <th>RANK</th>
               <th>WPM</th>
               <th>NAME</th>
+              <th>TIMESTAMP</th>
             </tr>
             {scores}
           </tbody>
