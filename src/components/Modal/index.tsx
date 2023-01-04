@@ -19,11 +19,11 @@ export default function Modal({ promptWords, reset }: ModalPrompts) {
   const incorrect = promptWords.filter(
     (word) => word.isCorrect === false
   ).length
-  const accuracy = Math.round(((correct / (correct + incorrect)) * 100))
+  const calculate = Math.round(((correct / (correct + incorrect)) * 100))
+  const accuracy = calculate ? calculate : 0
 
   const postResults = useCallback(async () => {
-    console.log(WPM, accuracy)
-    const token = getTokenFromLocalStorage()
+    const token = getTokenFromLocalStorage()  
     if (!token) {
       navigate(APP_ROUTES.LOGIN)
       return
@@ -38,8 +38,6 @@ export default function Modal({ promptWords, reset }: ModalPrompts) {
       body: JSON.stringify({ wpm: WPM, accuracy: accuracy }),
     })
     const data = await response.json()
-
-    console.log('HELLO', data)
   }, [])
 
   useEffect(() => {
