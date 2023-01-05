@@ -3,6 +3,10 @@ import { useNavigate } from 'react-router-dom'
 import { getTokenFromLocalStorage } from '../../utilis/common'
 import { API_ROUTES, APP_ROUTES } from '../../utilis/constants'
 import './Modal.css'
+import brokenHeart from '../../assets/images/broken_heart.jpg'
+import smile from '../../assets/images/smile.jpg'
+import star from '../../assets/images/star.jpg'
+import clock from '../../assets/images/clock.jpg'
 
 type ModalPrompts = {
   promptWords: Array<{
@@ -29,7 +33,7 @@ export default function Modal({ promptWords, reset }: ModalPrompts) {
       return
     }
 
-    const response = await fetch(API_ROUTES.POST_TEST, {
+    await fetch(API_ROUTES.POST_TEST, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -37,25 +41,92 @@ export default function Modal({ promptWords, reset }: ModalPrompts) {
       },
       body: JSON.stringify({ wpm: WPM, accuracy: accuracy }),
     })
-    const data = await response.json()
   }, [])
 
   useEffect(() => {
     postResults().catch(console.error)
   }, [])
 
+  useEffect(() => {
+    console.log(
+      `wpm: ${WPM}, accuracy: ${accuracy}, incorrect: ${incorrect}, correct: ${correct}`
+    )
+
+    const timer = setTimeout(() => {
+      let interval = 1000
+      let resultDisplays = document.querySelectorAll('.results__num')
+
+      resultDisplays.forEach((result) => {
+        let startValue = 0
+        let amount = result.getAttribute('data-val')
+        let endValue = Number(amount)
+        let duration = Math.floor(interval / endValue)
+
+        if (endValue === 0) {
+          return
+        }
+
+        let counter = setInterval(() => {
+          startValue += 1
+
+          result.textContent = startValue.toString()
+
+          if (endValue === 0) {
+            clearInterval(counter)
+          }
+
+          if (startValue === endValue) {
+            clearInterval(counter)
+          }
+        }, duration)
+      })
+    }, 200)
+
+    return () => {
+      clearTimeout(timer)
+    }
+  }, [])
+
   return (
     <div className='results__modal'>
-      <div className='results__container results__bg'>
-        <div className='results__headers'>
-          <h1>Your Results</h1>
-          <p>WPM: {WPM}</p>
-          <p>CORRECT: {correct}</p>
-          <p>INCORRECT: {incorrect}</p>
-          <p>Accuracy: {accuracy}%</p>
-          <button onClick={reset}>Close</button>
+      <div className='results__headers'>
+        <h1>Your Results</h1>
+        <button onClick={reset}>Close</button>
+      </div>
+      <div className='results__background'>
+        <div className='results__wrapper'>
+          <div className='results__container'>
+            <img src={clock} alt='neon clock icon' />
+            <span className='results__num' data-val={WPM}>
+              0
+            </span>
+            <span className='results__text purple__text'>WPM</span>
+          </div>
+
+          <div className='results__container'>
+            <img src={star} alt='neon star icon' />
+            <span className='results__num' data-val={accuracy}>
+              0
+            </span>
+            <span className='results__text yellow__text'>ACCURACY</span>
+          </div>
+
+          <div className='results__container'>
+            <img src={smile} alt='neon smiley face icon' />
+            <span className='results__num' data-val={correct}>
+              0
+            </span>
+            <span className='results__text green__text'>CORRECT</span>
+          </div>
+
+          <div className='results__container'>
+            <img src={brokenHeart} alt='neon broken heart icon' />
+            <span className='results__num' data-val={incorrect}>
+              0
+            </span>
+            <span className='results__text red__text'>INCORRECT</span>
+          </div>
         </div>
-        <div className='results__blur'></div>
       </div>
     </div>
   )
