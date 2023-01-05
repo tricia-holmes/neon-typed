@@ -15,7 +15,7 @@ type PromptWords = {
 
 export default function Game() {
   const navigate = useNavigate()
-  const STARTING__TIME = 10
+  const STARTING__TIME = 30
   const [timeRemaining, setTimeRemaining] = useState(STARTING__TIME)
   const [isTimeRunning, setIsTimeRunning] = useState(false)
   const [currentIndex, setCurrentIndex] = useState(0)

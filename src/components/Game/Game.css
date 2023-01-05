@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  animation: fade-in 2s forwards;
 }
 
 .game__container {
@@ -11,15 +12,14 @@
 
 .game__countdown {
   text-transform: uppercase;
-color: #05d9e3;
-  text-shadow: 0 0 2px #393a33, 0 0 35px #ffffff44, 0 0 10px #05d9e3, 0 0 2px #05d9e3;
+  color: #05d9e3;
+  text-shadow: 0 0 2px #393a33, 0 0 35px #ffffff44, 0 0 10px #05d9e3,
+    0 0 2px #05d9e3;
   font-family: Orbitron;
-  /* font-size: 3.5rem; */
 }
 
 .game__time {
   color: #05d9e3;
-  text-shadow: 0 0 2px #393a33, 0 0 35px #ffffff44, 0 0 10px #05d9e3, 0 0 2px #05d9e3;
+  text-shadow: 0 0 2px #393a33, 0 0 35px #ffffff44, 0 0 10px #05d9e3,
+    0 0 2px #05d9e3;
 }
-
-
