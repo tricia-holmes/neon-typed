@@ -1,24 +1,139 @@
-.modal {
+.results__modal {
   position: fixed;
   width: 100%;
   height: 100%;
   left: 0;
   top: 0;
   background-color: rgba(0, 0, 0, 0.75);
+  font-family: Orbitron;
+  text-transform: uppercase;
+  z-index: 9999;
 }
 
-.modal__container {
+.results__container {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 55vh;
-  width: 40vw;
+  justify-content: space-evenly;
   top: 50%;
   left: 50%;
+  border-radius: 3px;
   transform: translate(-50%, -50%);
-  background-color: #000000;
-  border: 3px solid #7dffec;
+  overflow: scroll;
+}
+
+.results__headers {
+  position: fixed;
+  top: 0%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%; 
+  height: 100%; 
   z-index: 9999;
 }
 
+.results__modal h1 {
+  position: relative;
+  bottom: 25%;
+  font-size: 2.7rem;
+  letter-spacing: 5px;
+  text-shadow: 0 0 2px #393a33, 0 0 35px #ffffff44, 0 0 10px #d43aff,
+  0 0 2px #d43aff;
+  color: #d43aff;
+  z-index: 9999;
+  filter: hue-rotate(270deg);
+}
+.results__modal button {
+  position: relative;
+  top: 25%;
+  font-size: 1.2rem;
+  background-color: transparent;
+  z-index: 9999;
+  color: #d43aff;
+  filter: hue-rotate(270deg);
+  font-family: Orbitron;
+  text-transform: uppercase;
+}
+
+.results__modal button:hover {
+  filter: hue-rotate(270deg);
+  box-shadow: 0 0 5px #d43aff, 0 0 25px #d43aff, 0 0 50px #d43aff,
+    0 0 1500px #d43aff;
+  background: #d43aff;
+  color: #fff;
+}
+
+.results__modal p {
+font-size: 1.2rem;  
+
+}
+
+.results__container {
+  display: flex;
+  flex-direction: row;
+}
+
+.results__bg {
+  position: relative;
+}
+
+.results__blur {
+  position: absolute;
+  z-index: -500;
+  filter: blur(20px);
+}
+
+.results__bg,
+.results__blur {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40vw;
+  height: 70vh;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.results__bg::before,
+.results__blur::before {
+  position: absolute;
+  content: '';
+  height: 200%;
+  width: 140%;
+  background: linear-gradient(
+    rgb(0, 191, 255) 20%,
+    transparent 45% 55%,
+    rgb(27, 51, 209) 80%
+  );
+  animation: glowing 6s infinite linear;
+}
+
+.results__bg::after {
+  position: absolute;
+  background: #000;
+  content: '';
+  border-radius: 18px;
+  inset: 4px;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 44%;
+  }
+}
+
+@keyframes blinking {
+  from {
+    border-right-color: rgba(0, 255, 255, 0.75);
+  }
+  to {
+    border-right-color: transparent;
+  }
+}

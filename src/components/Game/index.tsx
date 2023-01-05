@@ -15,7 +15,7 @@ type PromptWords = {
 
 export default function Game() {
   const navigate = useNavigate()
-  const STARTING__TIME = 30
+  const STARTING__TIME = 10
   const [timeRemaining, setTimeRemaining] = useState(STARTING__TIME)
   const [isTimeRunning, setIsTimeRunning] = useState(false)
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -45,9 +45,8 @@ export default function Game() {
     setPromptWords(wordObjs)
   }, [])
 
-
   useEffect(() => {
-    fetchData().catch(console.error) //need to add error handling
+    fetchData().catch(console.error)
   }, [])
 
   useEffect(() => {
@@ -102,8 +101,6 @@ export default function Game() {
     )
     setHasResults(false)
   }
-
-  
 
   return (
     <div className='game'>

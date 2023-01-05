@@ -19,11 +19,11 @@ export default function Modal({ promptWords, reset }: ModalPrompts) {
   const incorrect = promptWords.filter(
     (word) => word.isCorrect === false
   ).length
-  const calculate = Math.round(((correct / (correct + incorrect)) * 100))
+  const calculate = Math.round((correct / (correct + incorrect)) * 100)
   const accuracy = calculate ? calculate : 0
 
   const postResults = useCallback(async () => {
-    const token = getTokenFromLocalStorage()  
+    const token = getTokenFromLocalStorage()
     if (!token) {
       navigate(APP_ROUTES.LOGIN)
       return
@@ -45,14 +45,17 @@ export default function Modal({ promptWords, reset }: ModalPrompts) {
   }, [])
 
   return (
-    <div className='modal'>
-      <div className='modal__container'>
-        <button onClick={reset}>Close</button>
-        <h1>Your Results</h1>
-        <p>WPM: {WPM}</p>
-        <p>CORRECT: {correct}</p>
-        <p>INCORRECT: {incorrect}</p>
-        <p>Accuracy: {accuracy}%</p>
+    <div className='results__modal'>
+      <div className='results__container results__bg'>
+        <div className='results__headers'>
+          <h1>Your Results</h1>
+          <p>WPM: {WPM}</p>
+          <p>CORRECT: {correct}</p>
+          <p>INCORRECT: {incorrect}</p>
+          <p>Accuracy: {accuracy}%</p>
+          <button onClick={reset}>Close</button>
+        </div>
+        <div className='results__blur'></div>
       </div>
     </div>
   )
