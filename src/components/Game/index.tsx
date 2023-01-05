@@ -45,9 +45,8 @@ export default function Game() {
     setPromptWords(wordObjs)
   }, [])
 
-
   useEffect(() => {
-    fetchData().catch(console.error) //need to add error handling
+    fetchData().catch(console.error)
   }, [])
 
   useEffect(() => {
@@ -102,8 +101,6 @@ export default function Game() {
     )
     setHasResults(false)
   }
-
-  
 
   return (
     <div className='game'>

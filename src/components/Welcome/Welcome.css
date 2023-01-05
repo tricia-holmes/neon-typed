@@ -206,31 +206,6 @@ body {
   }
 }
 
-/* @keyframes typing {
-  from {
-    width: 0;
-  }
-  to {
-    width: 44%;
-  }
-}
-
-@keyframes blinking {
-  from {
-    border-right-color: rgba(0, 255, 255, 0.75);
-  }
-  to {
-    border-right-color: transparent;
-  }
-} */
-/* border-right: solid 3px rgba(92, 255, 236, 0.889); */
-
-/* @keyframes appear {
-  100% {
-    opacity: 100%;
-  }
-} */
-
 @keyframes blink {
   50% {
     border-color: transparent;
