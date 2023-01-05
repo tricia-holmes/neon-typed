@@ -48,10 +48,6 @@ export default function Modal({ promptWords, reset }: ModalPrompts) {
   }, [])
 
   useEffect(() => {
-    console.log(
-      `wpm: ${WPM}, accuracy: ${accuracy}, incorrect: ${incorrect}, correct: ${correct}`
-    )
-
     const timer = setTimeout(() => {
       let interval = 1000
       let resultDisplays = document.querySelectorAll('.results__num')

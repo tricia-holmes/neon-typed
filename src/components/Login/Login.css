@@ -132,12 +132,11 @@
 .login__loading {
   margin-top: 5%;
   font-size: 15px;
-  text-shadow: 0 0 2px #fff, 0 0 10px #fff, 0 0 20px rgb(0, 255, 0), 0 0 40px rgb(0, 255, 0),
-    0 0 0 rgb(0, 255, 0), 0 0 44px rgb(0, 255, 0), 0 0 75px rgb(0, 129, 0);
+  text-shadow: 0 0 2px #fff, 0 0 10px #fff, 0 0 20px rgb(0, 255, 0),
+    0 0 40px rgb(0, 255, 0), 0 0 0 rgb(0, 255, 0), 0 0 44px rgb(0, 255, 0),
+    0 0 75px rgb(0, 129, 0);
 }
 
-
-/* blue is CUBE, pink is BLUR */
 .blue {
   position: relative;
 }
@@ -178,15 +177,6 @@
   border-radius: 18px;
   inset: 4px;
 }
-
-/* @keyframes glowing {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-} */
 
 @keyframes left-neon {
   0%,

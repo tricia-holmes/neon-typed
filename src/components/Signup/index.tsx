@@ -43,13 +43,10 @@ export default function Signup() {
 
       if (!response.ok) {
         const error = await response.json()
-        console.log('RESPONSE', error)
         throw new Error(error.message)
       }
 
       const data: any = await response.json()
-
-      console.log('WHAT AM I', data)
 
       navigate(APP_ROUTES.LOGIN)
     } catch (err: any) {
@@ -106,7 +103,9 @@ export default function Signup() {
       <h1 className='signup__left-title'>
         <Link to='/'>Neon</Link>
       </h1>
-      <h1 className='signup__right-title'><Link to='/'>Typed</Link></h1>
+      <h1 className='signup__right-title'>
+        <Link to='/'>Typed</Link>
+      </h1>
     </div>
   )
 }
