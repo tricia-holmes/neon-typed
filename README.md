@@ -1,11 +1,16 @@
 <!-- PROJECT LOGO -->
-  <div align="center"">
-  <img src="https://media.giphy.com/media/xCXpXDiZ5dyc9xrnj9/giphy.gif" alt="Neon Typed" height="550"/>
+---
+
+
+  <div align="center">
+  <img height="650" src="https://user-images.githubusercontent.com/108706408/210942660-47687189-3d93-4ee2-a2b5-db9a62fc5a8f.png" alt="Neon Typed" />
 </div>
 <br />
-
-
-
+<br />
+<p align="center">
+<a href="https://neontyped.io/">Test your typing skills here!</a>
+</p>
+<br />
 
 <!-- TABLE OF CONTENTS -->
 <details>
@@ -19,10 +24,9 @@
     </li>
     <li>
       <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
+    </li>
+    <li>
+      <a href="#contact">Contact</a>
     </li>
   </ol>
 </details>
@@ -78,6 +82,8 @@ To get Neon Typed running locally, follow these steps:
    npm run dev
    ```
 4. Visit `http://localhost:5173/` to see Neon Typed runnning.
+5. Next, go to [Neon Typed API](https://github.com/tricia-holmes/neon-typed-api) and follow the installation instructions.
+6. Once Neon Typed API is running, you are all set with running Neon Typed locally! 🎉
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
