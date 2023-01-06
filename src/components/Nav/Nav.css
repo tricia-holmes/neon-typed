@@ -82,3 +82,9 @@
 .nav__btn:active {
   transform: scale(0.98);
 }
+
+@media screen and (min-height: 835px) {
+  .links__container {
+    bottom: 17vh;
+  }
+}
