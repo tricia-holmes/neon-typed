@@ -6,28 +6,9 @@
 </div>
 <br />
 <p align="center">
-<a href="https://neontyped.io/">Test your typing skills here!</a>
+<a href="https://neontyped.io/">Test your typing skills here!</a> <img height="30" src="https://user-images.githubusercontent.com/108706408/211001198-9e705215-3462-49de-ba54-3ec2bfb244e3.gif" alt="neon thunderbolt" />
 </p>
 <br />
-
-<!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-    </li>
-    <li>
-      <a href="#contact">Contact</a>
-    </li>
-  </ol>
-</details>
 
 
 
@@ -41,13 +22,13 @@ Neon Typed is a  neon / Cyberpunk inspired typing test app. Create an account, t
 
 ### Built With
 
-* [![React][React.js]][React-url]
-* [![TypeScript][TypeScript]][Typescript-url]
-* [![Angular][Angular.io]][Angular-url]
-* [![Svelte][Svelte.dev]][Svelte-url]
-* [![Laravel][Laravel.com]][Laravel-url]
-* [![Bootstrap][Bootstrap.com]][Bootstrap-url]
-* [![JQuery][JQuery.com]][JQuery-url]
+* ![Vite][Vite]
+* ![CSS3][CSS3]
+* ![React][React.js]
+* ![HTML5][HTML5]
+* ![TypeScript][TypeScript]
+* ![Cloudflare][Cloudflare]
+* ![React Router][React Router]
 
 
 
@@ -69,9 +50,9 @@ To get Neon Typed running locally, follow these steps:
    ```sh
    npm run dev
    ```
-4. Visit `http://localhost:5173/` to see Neon Typed runnning.
-5. Next, go to [Neon Typed API](https://github.com/tricia-holmes/neon-typed-api) and follow the installation instructions.
-6. Once Neon Typed API is running, you are all set with running Neon Typed locally! 🎉
+4. Next, go to [Neon Typed API](https://github.com/tricia-holmes/neon-typed-api) and follow the installation instructions.
+5. Once Neon Typed API is setup, visit `http://localhost:5173/` to see the app runnning.
+6. You are now all set with running Neon Typed locally! 🎉
 
 
 
@@ -85,20 +66,10 @@ Tricia Holmes - [LinkedIn](https://www.linkedin.com/in/triciaholmes/) - tricia.m
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
-[contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=for-the-badge
-[forks-url]: https://github.com/othneildrew/Best-README-Template/network/members
-[stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=for-the-badge
-[stars-url]: https://github.com/othneildrew/Best-README-Template/stargazers
-[issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=for-the-badge
-[issues-url]: https://github.com/othneildrew/Best-README-Template/issues
-[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
-[license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/othneildrew
-[product-screenshot]: images/screenshot.png
+[Cloudflare]: https://img.shields.io/badge/Cloudflare-F38020?style=for-the-badge&logo=Cloudflare&logoColor=white
+[Vite]: https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white
 [TypeScript]: https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white
-[TypeScript-url]: https://www.typescriptlang.org/
+[HTML5]: https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
-[React-url]: https://reactjs.org/
+[CSS3]: https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white
+[React Router]: https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white
