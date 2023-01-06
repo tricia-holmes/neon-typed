@@ -122,3 +122,7 @@ section.augs {
     0 0 10px #ffff6633 0 0 2px #fc199a;
 }
 
+.words::-webkit-scrollbar {
+  display: none;
+}
+
